@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BAP: real estate investor app for distress leads, deals and funding</title><meta name="description" content="BAP finds distressed properties from public records nationwide and helps investors analyze, fund and close deals.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NW1CM3V8C2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NW1CM3V8C2',{anonymize_ip:true});</script>
+<style>
+:root{--bg:#fff;--soft:#f4f6fa;--fg:#172033;--muted:#5b6475;--line:#e2e6ee;--accent:#2f5bd3;--accent-fg:#fff;--ok:#127a43;--err:#b42318;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--soft:#161d27;--fg:#e8ecf2;--muted:#9aa4b4;--line:#283140;--accent:#7fa2ff;--accent-fg:#0f141b;--ok:#4cc38a;--err:#ff8a7a;color-scheme:dark}}
+*{box-sizing:border-box} html{background:var(--bg)} body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)} .wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:16px;min-height:58px;flex-wrap:wrap} .logo{font-weight:800;font-size:1.25rem;text-decoration:none;color:var(--fg);margin-right:auto}
+header nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center} header nav a{text-decoration:none;color:var(--fg);font-size:.95rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg)!important;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--accent)!important;border:1.5px solid var(--accent)}
+.hero{padding:56px 0 36px} .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;margin:0 0 12px} .hero p{font-size:1.15rem;color:var(--muted);max-width:640px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px} section{padding:34px 0} section.soft{background:var(--soft)}
+h2{font-size:1.6rem;margin:0 0 10px} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px} .card h3{margin:0 0 6px;font-size:1.1rem} .card p{margin:0;color:var(--muted)}
+form{display:grid;gap:12px;max-width:620px} label{display:grid;gap:4px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%;max-width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media (max-width:560px){.two{grid-template-columns:1fr}}
+.check{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--muted)} .check input{width:auto;margin-top:4px}
+.hp{position:absolute;left:-9999px} .msg{font-weight:600} .msg.ok{color:var(--ok)} .msg.err{color:var(--err)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--bg)} summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.92rem} footer .wrap{display:flex;gap:16px;flex-wrap:wrap}
+.small{font-size:.9rem;color:var(--muted)} .result{display:grid;gap:12px;margin-top:14px} .tag{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}
+</style></head><body>
+<header><div class="wrap"><a class="logo" href="">BAP</a><nav>
+<a href="cash-offer/">Sell a house</a><a href="funding/">Funding</a><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ16HsxPcGoraMYWnF1kXXbE9RIOc8MFcIwc0UEP2MzVi6r4JVuyNByDFOE8LhCAnGYnszwY2fy8" target="_blank" rel="noopener">Book a call</a>
+<a class="btn ghost" href="https://app.buybap.com/#demo" data-ev="try_demo">Try the demo</a><a class="btn" href="https://app.buybap.com/" data-ev="open_app">Open BAP</a></nav></div></header>
+<main>
+<div class="wrap hero"><h1>Find distressed properties, run the numbers, and close.</h1>
+<p>BAP is the all-in-one app for real estate investors: live distress leads from county and city records, a CRM, deal analysis, contracts, and the lenders, contractors and buyers to finish the deal.</p>
+<div class="row"><a class="btn" href="https://app.buybap.com/" data-ev="open_app">Open BAP</a><a class="btn ghost" href="https://app.buybap.com/#demo" data-ev="try_demo">Try the free demo</a></div>
+<p class="small" style="margin-top:14px">Selling a house? <a href="cash-offer/">Get a cash offer</a>.</p></div>
+<section class="soft"><div class="wrap"><h2>What BAP does</h2><div class="grid">
+<div class="card"><h3>Distress leads, nationwide</h3><p>Tax delinquent, pre-foreclosure, vacant and code-violation properties from public records in 15+ markets, updated around the clock.</p></div>
+<div class="card"><h3>Stack filters, find motivated owners</h3><p>Combine signals like tax delinquent + absentee + senior to narrow thousands of leads to the few worth calling.</p></div>
+<div class="card"><h3>Analyze any deal</h3><p>Value and rent estimates, repair budgets, AI deal analysis and offer math in one place.</p></div>
+<div class="card"><h3>Lenders, contractors, buyers</h3><p>Top 5 lenders and contractors near any ZIP, one-click loan packages, and your cash-buyer list.</p></div>
+</div></div></section>
+<section><div class="wrap"><h2>How it works</h2><div class="grid">
+<div class="card"><h3>1. Find</h3><p>Pick a market on the map and filter for the distress you want.</p></div>
+<div class="card"><h3>2. Reach</h3><p>Skip trace the owner, track every call and letter in your pipeline.</p></div>
+<div class="card"><h3>3. Run the numbers</h3><p>Get value, rent, repairs and an AI analysis before you make an offer.</p></div>
+<div class="card"><h3>4. Close</h3><p>Generate a state-specific contract, line up funding and send the deal to buyers.</p></div>
+</div></div></section>
+<section class="soft"><div class="wrap"><h2>Pricing</h2><div class="grid">
+<div class="card"><h3>Founding membership: $49/month</h3><p>Full app access, member pricing on every add-on and free contract templates. Cancel anytime.</p></div>
+<div class="card"><h3>Pay-as-you-go credits</h3><p>Skip trace from 15¢ (charged only when found), value + rent $0.50, AI deal analysis $1 for members.</p></div>
+</div><div class="row"><a class="btn" href="https://app.buybap.com/" data-ev="open_app">Start with BAP</a></div></div></section>
+<section id="deal-desk"><div class="wrap"><h2>Deal desk</h2><p class="small">Have a property under contract or a deal to sell or fund? Send it over and we’ll reply within one business day.</p>
+<form onsubmit="return submitLead(this,'deal')"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="two"><label>Your name<input name="name" autocomplete="name" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel"></label></div>
+<div class="two"><label>Email<input name="email" type="email" autocomplete="email"></label><label>I want to<select name="intent"><option>Sell this deal to buyers</option><option>Get funding</option><option>Get a second opinion</option></select></label></div>
+<label>Property address<input name="address" autocomplete="street-address"></label>
+<div class="two"><label>City<input name="city"></label><label>ZIP<input name="zip" inputmode="numeric" maxlength="5"></label></div>
+<label>Notes (price, repairs, timeline)<textarea name="notes" rows="3"></textarea></label>
+<label class="check"><input type="checkbox" name="consent" required> I agree that BAP may contact me by phone, text or email about this request. Consent is not a condition of any sale.</label><button class="btn" type="submit">Send to the deal desk</button><p class="msg" role="status"></p></form></div></section>
+<section class="soft"><div class="wrap"><h2>Questions</h2>
+<details><summary>Is there a free trial?</summary><p>Yes, the demo at app.buybap.com/#demo lets you explore BAP with real leads. Nothing is saved, sent or charged.</p></details>
+<details><summary>Where does the lead data come from?</summary><p>Public county and city records: tax rolls, foreclosure notices, code enforcement and vacant-building lists.</p></details>
+<details><summary>Can I cancel anytime?</summary><p>Yes, online in the app under Services → Manage billing. See the <a href="https://app.buybap.com/refunds/">refund policy</a>.</p></details>
+<details><summary>Is BAP on iPhone?</summary><p>BAP works in any phone browser today, and a native iPhone app is on the way.</p></details>
+</div></section></main>
+<footer><div class="wrap"><span>© 2026 Apex Care Solutions VA LLC dba BAP</span>
+<a href="https://app.buybap.com/terms/">Terms</a><a href="https://app.buybap.com/privacy/">Privacy</a><a href="https://app.buybap.com/refunds/">Refunds</a>
+<a href="mailto:support@buybap.com">support@buybap.com</a><span>214-477-7727</span></div></footer>
+<script>
+const SB_URL="https://rpcdrgzcaarggupctede.supabase.co", SB_KEY="sb_publishable_qyI3EzhYghqCmRnhu41ucg_lhzhufqt";
+document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{gtag('event',a.dataset.ev)}catch(e){}}));
+async function submitLead(form, kind, extra){
+  const msg=form.querySelector('.msg'); const fd=new FormData(form); const p={form:kind, details:{}};
+  for(const [k,v] of fd.entries()){ if(['name','phone','email','address','city','state','zip','website'].includes(k)) p[k]=String(v).trim(); else if(k==='consent') p.consent=true; else p.details[k]=String(v).trim(); }
+  Object.assign(p.details, extra||{}); p.details.page=location.pathname;
+  if(!p.phone && !p.email){ msg.className='msg err'; msg.textContent='Please add a phone number or email so we can reach you.'; return false; }
+  msg.className='msg'; msg.textContent='Sending…'; const b=form.querySelector('button[type=submit]'); if(b) b.disabled=true;
+  try{ const r=await fetch(SB_URL+'/rest/v1/rpc/submit_web_lead',{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p})});
+    if(!r.ok) throw new Error((await r.json().catch(()=>({}))).message||'HTTP '+r.status);
+    msg.className='msg ok'; msg.textContent='Got it. We\u2019ll reach out within one business day.'; form.reset();
+    try{gtag('event','generate_lead',{form:kind})}catch(e){}
+  }catch(e){ msg.className='msg err'; msg.textContent='Something went wrong: '+e.message+'. Please call 214-477-7727.'; }
+  if(b) b.disabled=false; return false;
+}
+</script>
+</body></html>
