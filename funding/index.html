@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Funding for real estate deals · BAP</title><meta name="description" content="See which loan types fit your flip, rental or wholesale deal and how much cash you need to close.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NW1CM3V8C2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NW1CM3V8C2',{anonymize_ip:true});</script>
+<style>
+:root{--bg:#fff;--soft:#f4f6fa;--fg:#172033;--muted:#5b6475;--line:#e2e6ee;--accent:#2f5bd3;--accent-fg:#fff;--ok:#127a43;--err:#b42318;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--soft:#161d27;--fg:#e8ecf2;--muted:#9aa4b4;--line:#283140;--accent:#7fa2ff;--accent-fg:#0f141b;--ok:#4cc38a;--err:#ff8a7a;color-scheme:dark}}
+*{box-sizing:border-box} html{background:var(--bg)} body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)} .wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:16px;min-height:58px;flex-wrap:wrap} .logo{font-weight:800;font-size:1.25rem;text-decoration:none;color:var(--fg);margin-right:auto}
+header nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center} header nav a{text-decoration:none;color:var(--fg);font-size:.95rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg)!important;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--accent)!important;border:1.5px solid var(--accent)}
+.hero{padding:56px 0 36px} .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;margin:0 0 12px} .hero p{font-size:1.15rem;color:var(--muted);max-width:640px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px} section{padding:34px 0} section.soft{background:var(--soft)}
+h2{font-size:1.6rem;margin:0 0 10px} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px} .card h3{margin:0 0 6px;font-size:1.1rem} .card p{margin:0;color:var(--muted)}
+form{display:grid;gap:12px;max-width:620px} label{display:grid;gap:4px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%;max-width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media (max-width:560px){.two{grid-template-columns:1fr}}
+.check{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--muted)} .check input{width:auto;margin-top:4px}
+.hp{position:absolute;left:-9999px} .msg{font-weight:600} .msg.ok{color:var(--ok)} .msg.err{color:var(--err)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--bg)} summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.92rem} footer .wrap{display:flex;gap:16px;flex-wrap:wrap}
+.small{font-size:.9rem;color:var(--muted)} .result{display:grid;gap:12px;margin-top:14px} .tag{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}
+</style></head><body>
+<header><div class="wrap"><a class="logo" href="../">BAP</a><nav>
+<a href="../cash-offer/">Sell a house</a><a href="../funding/">Funding</a><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ16HsxPcGoraMYWnF1kXXbE9RIOc8MFcIwc0UEP2MzVi6r4JVuyNByDFOE8LhCAnGYnszwY2fy8" target="_blank" rel="noopener">Book a call</a>
+<a class="btn ghost" href="https://app.buybap.com/#demo" data-ev="try_demo">Try the demo</a><a class="btn" href="https://app.buybap.com/" data-ev="open_app">Open BAP</a></nav></div></header>
+<main><div class="wrap hero"><h1>Need the money to close?</h1>
+<p>Enter your numbers and see which loan types fit your deal, roughly what they cost and how much cash you’d bring. Then ask for an intro to a lender.</p></div>
+<section><div class="wrap"><form id="calc" onsubmit="return false">
+<div class="two"><label>Purchase price ($)<input id="pp" inputmode="decimal" placeholder="150000"></label><label>Rehab budget ($)<input id="rb" inputmode="decimal" placeholder="40000"></label></div>
+<div class="two"><label>After-repair value ($)<input id="arv" inputmode="decimal" placeholder="310000"></label><label>Cash you can put in ($)<input id="cash" inputmode="decimal" placeholder="20000"></label></div>
+<label>Exit plan<select id="exit"><option value="flip">Fix and flip</option><option value="rental">Hold as a rental</option><option value="wholesale">Wholesale / double close</option></select></label>
+<button class="btn" type="button" id="go">See my options</button></form>
+<div id="res" class="result"></div>
+<div id="intro" style="display:none;margin-top:24px"><h2>Get an intro to a lender</h2>
+<form onsubmit="return submitLead(this,'funding',window.__deal||{})"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="two"><label>Your name<input name="name" autocomplete="name" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel"></label></div>
+<label>Email<input name="email" type="email" autocomplete="email"></label><label>Property address (optional)<input name="address"></label>
+<label class="check"><input type="checkbox" name="consent" required> I agree that BAP may contact me by phone, text or email about this request. Consent is not a condition of any sale.</label><button class="btn" type="submit">Request a lender intro</button><p class="msg" role="status"></p></form></div>
+<p class="small" style="margin-top:20px">Typical market ranges for education only, not a loan offer or financial advice. Lenders set their own terms.</p></div></section></main>
+<script>
+const $=id=>document.getElementById(id), n=v=>Number(String(v||'').replace(/[$,\s]/g,''))||0, m=v=>'$'+Math.round(v).toLocaleString('en-US');
+$('go').onclick=()=>{
+  const pp=n($('pp').value), rb=n($('rb').value), arv=n($('arv').value), cash=n($('cash').value), ex=$('exit').value, out=$('res');
+  out.textContent=''; if(!pp){ out.innerHTML='<p class="msg err">Enter at least a purchase price.</p>'; return; }
+  const close=pp*0.03, opts=[];
+  const hmLoan=Math.min(pp*0.9+rb, (arv||pp*1.4)*0.7), hmBring=pp+rb+close+hmLoan*0.025-hmLoan;
+  opts.push({name:'Hard money',fit:ex==='flip'?3:ex==='rental'?2:1,terms:'About 10\u201313% interest, 2\u20133 points, 6\u201312 months. Lends on the after-repair value.',loan:hmLoan,bring:hmBring});
+  if(ex==='rental'){ const dscr=(arv||pp)*0.75; opts.push({name:'DSCR rental loan (refinance)',fit:3,terms:'About 7\u20138.5%, 30 years, approved on rent covering the payment. Use it to refinance out of hard money.',loan:dscr,bring:Math.max(0,pp+rb+close-dscr)}); }
+  if(ex==='wholesale') opts.push({name:'Transactional funding',fit:3,terms:'Same-day money for a double close. Usually 1\u20132% of the purchase, repaid at the resale.',loan:pp,bring:pp*0.015+close*0.3});
+  const brLoan=pp*0.75; opts.push({name:'Bridge loan',fit:ex==='flip'?2:1,terms:'About 9\u201311%, 6\u201324 months, based on the as-is value.',loan:brLoan,bring:pp+rb+close-brLoan});
+  const short=Math.max(0,hmBring-cash); if(short>0) opts.push({name:'Gap funding',fit:cash<hmBring?2:1,terms:'Covers the down payment or rehab a main lender won\u2019t, often 12\u201318% or a profit split.',loan:short,bring:0});
+  opts.sort((a,b)=>b.fit-a.fit);
+  const profit=arv? arv*0.92 - pp - rb - close - hmLoan*0.12 : null;
+  window.__deal={purchase:pp,rehab:rb,arv,cash,exit:ex};
+  out.innerHTML=(profit!==null?'<p><span class="tag">Rough flip profit after costs: '+m(profit)+'</span></p>':'')+opts.map((o,i)=>'<div class="card"><h3>'+(i===0?'Best fit: ':'')+o.name+'</h3><p>'+o.terms+'</p><p style="margin-top:8px"><b>Loan about '+m(o.loan)+'</b> \u00b7 You bring about '+m(Math.max(0,o.bring))+(cash&&o.bring>cash?' (more than your '+m(cash)+')':'')+'</p></div>').join('');
+  $('intro').style.display='block'; try{gtag('event','funding_calc',{exit:ex})}catch(e){}
+};
+</script>
+<footer><div class="wrap"><span>© 2026 Apex Care Solutions VA LLC dba BAP</span>
+<a href="https://app.buybap.com/terms/">Terms</a><a href="https://app.buybap.com/privacy/">Privacy</a><a href="https://app.buybap.com/refunds/">Refunds</a>
+<a href="mailto:support@buybap.com">support@buybap.com</a><span>214-477-7727</span></div></footer>
+<script>
+const SB_URL="https://rpcdrgzcaarggupctede.supabase.co", SB_KEY="sb_publishable_qyI3EzhYghqCmRnhu41ucg_lhzhufqt";
+document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{gtag('event',a.dataset.ev)}catch(e){}}));
+async function submitLead(form, kind, extra){
+  const msg=form.querySelector('.msg'); const fd=new FormData(form); const p={form:kind, details:{}};
+  for(const [k,v] of fd.entries()){ if(['name','phone','email','address','city','state','zip','website'].includes(k)) p[k]=String(v).trim(); else if(k==='consent') p.consent=true; else p.details[k]=String(v).trim(); }
+  Object.assign(p.details, extra||{}); p.details.page=location.pathname;
+  if(!p.phone && !p.email){ msg.className='msg err'; msg.textContent='Please add a phone number or email so we can reach you.'; return false; }
+  msg.className='msg'; msg.textContent='Sending…'; const b=form.querySelector('button[type=submit]'); if(b) b.disabled=true;
+  try{ const r=await fetch(SB_URL+'/rest/v1/rpc/submit_web_lead',{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p})});
+    if(!r.ok) throw new Error((await r.json().catch(()=>({}))).message||'HTTP '+r.status);
+    msg.className='msg ok'; msg.textContent='Got it. We\u2019ll reach out within one business day.'; form.reset();
+    try{gtag('event','generate_lead',{form:kind})}catch(e){}
+  }catch(e){ msg.className='msg err'; msg.textContent='Something went wrong: '+e.message+'. Please call 214-477-7727.'; }
+  if(b) b.disabled=false; return false;
+}
+</script>
+</body></html>
