@@ -76,6 +76,8 @@ footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area
 <script>
 const SB_URL="https://rpcdrgzcaarggupctede.supabase.co", SB_KEY="sb_publishable_qyI3EzhYghqCmRnhu41ucg_lhzhufqt";
 document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{gtag('event',a.dataset.ev)}catch(e){}}));
+// pass a post's or ad's utm_ tags through to the app so BAP knows which channel brought each signup
+(function(){try{const u=[...new URLSearchParams(location.search)].filter(([k])=>/^utm_/.test(k));if(!u.length)return;document.querySelectorAll('a[href^="https://app.buybap.com/"]').forEach(l=>{if(/\/(terms|privacy|refunds)\//.test(l.href))return;const x=new URL(l.href);u.forEach(([k,v])=>x.searchParams.set(k,v));l.href=x.toString();});}catch(e){}})();
 async function submitLead(form, kind, extra){
   const msg=form.querySelector('.msg'); const fd=new FormData(form); const p={form:kind, details:{}};
   for(const [k,v] of fd.entries()){ if(['name','phone','email','address','city','state','zip','website'].includes(k)) p[k]=String(v).trim(); else if(k==='consent') p.consent=true; else p.details[k]=String(v).trim(); }
