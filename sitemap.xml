@@ -7,4 +7,11 @@
   <url><loc>https://app.buybap.com/privacy/</loc></url>
   <url><loc>https://app.buybap.com/refunds/</loc></url>
   <url><loc>https://www.buybap.com/post-a-deal/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/dallas-county-tx/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/philadelphia-county-pa/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/cuyahoga-county-oh/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/wayne-county-mi/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/hamilton-county-oh/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/orleans-parish-la/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.buybap.com/leads/</loc><changefreq>weekly</changefreq></url>
 </urlset>
