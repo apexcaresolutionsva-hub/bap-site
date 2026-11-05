@@ -48,7 +48,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area
 <div class="card"><h3>3. Run the numbers</h3><p>Get value, rent, repairs and an AI analysis before you make an offer.</p></div>
 <div class="card"><h3>4. Close</h3><p>Generate a state-specific contract, line up funding and send the deal to buyers.</p></div>
 </div></div></section>
-<section class="soft"><div class="wrap"><h2>Pricing</h2><div class="grid">
+<section class="soft"><div class="wrap"><h2>Pricing</h2><div id="ll" class="card" style="display:none;border:2px solid var(--accent);margin-top:12px" role="status"><h3>Launch Lock: <span id="ll-n">100</span> of 100 spots left</h3><p>The first 100 members to join any paid plan by Dec 2 keep that price for as long as they stay subscribed, plus a free $20 credit pack.</p></div><div class="grid">
 <div class="card"><h3>Starter: $49/month</h3><p><b>Unlimited BAP leads</b> with owner details, plus 150 on-demand nationwide leads and 500 skip traces a month. Pipeline, list imports, contracts and e-signing included.</p></div>
 <div class="card"><h3>Pro: $99/month <span class="small">· most popular</span></h3><p><b>Unlimited BAP leads</b>, plus 400 on-demand nationwide leads, 1,500 skip traces and 10 AI deal analyses a month. Try it free for 7 days, then $99/month unless you cancel before the trial ends.</p></div>
 <div class="card"><h3>Team: $199/month</h3><p><b>Unlimited BAP leads</b> for 3 users, plus 800 on-demand nationwide leads, 3,000 skip traces, 30 AI deal analyses a month and 10% off mail.</p></div>
@@ -78,6 +78,8 @@ const SB_URL="https://rpcdrgzcaarggupctede.supabase.co", SB_KEY="sb_publishable_
 document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{gtag('event',a.dataset.ev)}catch(e){}}));
 // pass a post's or ad's utm_ tags through to the app so BAP knows which channel brought each signup
 (function(){try{const u=[...new URLSearchParams(location.search)].filter(([k])=>/^utm_/.test(k));if(!u.length)return;document.querySelectorAll('a[href^="https://app.buybap.com/"]').forEach(l=>{if(/\/(terms|privacy|refunds)\//.test(l.href))return;const x=new URL(l.href);u.forEach(([k,v])=>x.searchParams.set(k,v));l.href=x.toString();});}catch(e){}})();
+// Launch Lock counter: shows only while the offer is approved, open and has spots left
+(async function(){try{const r=await fetch(SB_URL+'/rest/v1/rpc/launch_lock_status',{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:'{}'});if(!r.ok)return;const j=await r.json();if(!j||!j.live)return;document.getElementById('ll-n').textContent=j.spots_left;document.getElementById('ll').style.display='block';}catch(e){}})();
 async function submitLead(form, kind, extra){
   const msg=form.querySelector('.msg'); const fd=new FormData(form); const p={form:kind, details:{}};
   for(const [k,v] of fd.entries()){ if(['name','phone','email','address','city','state','zip','website'].includes(k)) p[k]=String(v).trim(); else if(k==='consent') p.consent=true; else p.details[k]=String(v).trim(); }
