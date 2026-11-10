@@ -1,0 +1,94 @@
+{
+ "_note": "Evergreen how-to guides. Plain facts only: no invented statistics, no promises of results. Each guide links to the matching tool pages (by slug in features.json) and the county index.",
+ "guides": [
+  {
+   "slug": "how-to-find-tax-delinquent-properties",
+   "title": "How to find tax-delinquent properties",
+   "desc": "Where delinquent tax lists come from, how to read them, and how investors turn a list into conversations with owners.",
+   "published": "2026-11-10",
+   "tools": ["distressed-property-leads", "skip-tracing", "direct-mail"],
+   "intro": "A tax-delinquent property is one whose owner has fallen behind on property taxes. Owners in that position are sometimes more open to a quick, fair sale, which is why investors look for them. The information is public, but it is scattered across thousands of county offices.",
+   "sections": [
+    {"h": "Where the information lives", "p": ["Property taxes are collected by the county, usually through a tax collector or treasurer. Many counties publish a delinquent tax roll, a list of accounts with unpaid balances, on their website or on request. Some publish it only in the weeks before a tax sale.", "The county assessor or appraisal district holds the ownership and mailing address records you will need to contact the owner."]},
+    {"h": "Steps to build a list", "ul": ["Pick one or two counties to start. Depth beats breadth.", "Find the county's delinquent list or search tool and download or copy the accounts.", "Match each account to its owner and mailing address in the assessor's records.", "Mark the ones where the mailing address differs from the property address, which often means an absentee owner.", "Skip trace the owners you want to contact and start outreach."]},
+    {"h": "Things to check before you call", "ul": ["How long the owner has to pay before the county can sell the property. Redemption periods and tax-sale rules differ by state.", "Whether a payment plan is in place. A property on a plan is usually a weaker lead.", "How much is owed compared with what the property is worth."]},
+    {"h": "Where BAP fits", "p": ["BAP collects delinquency records from the counties it covers and shows them as a signal on each lead, so you can filter instead of copying lists by hand. Coverage varies by county, and records are only as current as each county's publishing."]}
+   ]
+  },
+  {
+   "slug": "what-is-pre-foreclosure",
+   "title": "What is pre-foreclosure, and how do investors approach it?",
+   "desc": "How pre-foreclosure works, why timing matters, and the care investors should take when talking with owners in foreclosure.",
+   "published": "2026-11-10",
+   "tools": ["nationwide-leads", "distressed-property-leads", "ai-deal-analysis"],
+   "intro": "Pre-foreclosure is the stretch after a lender starts the foreclosure process and before the property is sold at auction. The owner usually still holds title and still has options, including selling the home.",
+   "sections": [
+    {"h": "How it starts", "p": ["The process begins when the borrower falls behind and the lender takes a formal step, often a notice of default or a lawsuit filing. The exact steps and timelines depend on the state, and especially on whether it uses a court (judicial) or non-court (non-judicial) process."]},
+    {"h": "Why timing matters", "p": ["The owner's choices narrow as the sale date approaches. Before it, they may be able to catch up, work something out with the lender or sell. After it, those choices are mostly gone. Reaching out early, with a clear and honest offer, is better for everyone than a last-minute rush."]},
+    {"h": "Approach it with care", "ul": ["Be clear about who you are and what you are offering. Never imply you are the lender or a government agency.", "Several states have special rules for dealing with owners facing foreclosure, including required disclosures, cancellation rights and limits on how you can buy. Learn your state's rules before you start.", "Encourage the owner to talk to a housing counselor or attorney. A fair deal holds up to that."]},
+    {"h": "Running the numbers", "p": ["Check what is owed against what the property is worth, then budget repairs and your costs. See our guide to maximum allowable offer math for a common starting formula."]},
+    {"h": "Where BAP fits", "p": ["BAP shows pre-foreclosure as a signal where its counties publish it, and can pull on-demand pre-foreclosure leads for most other US counties through a national records provider. Availability varies by county."]}
+   ]
+  },
+  {
+   "slug": "skip-tracing-for-real-estate-investors",
+   "title": "Skip tracing for real estate investors: how it works and how to stay compliant",
+   "desc": "What skip tracing is, what it can and can't find, and the calling and texting rules every investor should know.",
+   "published": "2026-11-10",
+   "tools": ["skip-tracing", "distressed-property-leads", "direct-mail"],
+   "intro": "Public records usually give you an owner's name and mailing address, not a phone number. Skip tracing is the process of finding current contact details for a person from other data sources.",
+   "sections": [
+    {"h": "What it can and can't do", "p": ["A skip trace searches commercial and public data to match a person to phone numbers and email addresses. It won't find a number for everyone, and the numbers it does find can be old or wrong. Treat the result as a lead to verify, not a guarantee."]},
+    {"h": "Check numbers before you call or text", "ul": ["The National Do Not Call Registry: federal rules restrict telemarketing calls to registered numbers.", "Calling hours: federal rules bar telemarketing calls before 8 a.m. or after 9 p.m. in the recipient's local time, and some states are stricter.", "Texting: marketing texts generally need the recipient's prior consent. Carriers also require businesses to register before sending.", "Opt-outs: if someone asks you to stop, stop, and keep a record."]},
+    {"h": "Mail needs no phone number", "p": ["If a trace comes back empty, the owner's mailing address from county records still lets you reach them by mail."]},
+    {"h": "Where BAP fits", "p": ["BAP runs skip tracing from the lead screen and flags numbers on the Do Not Call list, known litigators and deceased owners. It also checks opt-outs and calling hours before you call from the app. These checks help, but they do not replace your own compliance with calling and texting laws."]},
+    {"h": "A note on the law", "p": ["This guide is general information, not legal advice. Calling, texting and wholesaling rules vary by state, so confirm what applies to you."]}
+   ]
+  },
+  {
+   "slug": "maximum-allowable-offer-wholesaling",
+   "title": "Maximum allowable offer (MAO): a simple formula for wholesale deals",
+   "desc": "How to work out the most you can pay for a property, the common 70% rule, and what the formula leaves out.",
+   "published": "2026-11-10",
+   "tools": ["ai-deal-analysis", "value-and-rent-estimates", "cash-buyers-and-deal-pages"],
+   "intro": "Maximum allowable offer, or MAO, is the most you can pay for a property and still leave room for your buyer's profit and your own fee. It keeps you from falling in love with a deal that doesn't work.",
+   "sections": [
+    {"h": "The common rule of thumb", "p": ["Many investors start from this formula: MAO = after-repair value (ARV) × 70% − estimated repairs. Wholesalers then subtract their own assignment fee."]},
+    {"h": "A worked example", "ul": ["ARV: $200,000", "70% of ARV: $140,000", "Estimated repairs: $30,000", "MAO before your fee: $110,000", "If you want a $10,000 assignment fee, your contract price should be at or below $100,000."]},
+    {"h": "Where the numbers come from", "ul": ["ARV comes from recent sales of similar, renovated homes nearby, called comps.", "Repairs come from a walkthrough or a contractor's estimate. Budget a cushion, because repairs usually run over.", "The 70% figure is a rule of thumb. In hot markets buyers may accept less margin, and in slow ones they may want more."]},
+    {"h": "What the formula leaves out", "p": ["It ignores holding costs, closing costs, financing costs and your local market. Treat the result as a starting point and test it against what your actual buyers will pay."]},
+    {"h": "Where BAP fits", "p": ["BAP provides estimated value and rent ranges and an AI deal summary with estimated repairs and a suggested maximum offer. These are estimates, not appraisals, and AI output can contain errors, so check them before you make an offer."]}
+   ]
+  },
+  {
+   "slug": "driving-for-dollars-guide",
+   "title": "Driving for dollars: how to find motivated sellers in person",
+   "desc": "What to look for, how to log what you find, and how to turn a drive-by into a conversation with the owner.",
+   "published": "2026-11-10",
+   "tools": ["driving-for-dollars", "real-estate-crm-pipeline", "distressed-property-map"],
+   "intro": "Driving for dollars means driving or walking neighborhoods to spot properties that look neglected, then tracing the owner. It finds houses that never show up on a list, but it is slow unless you stay organized.",
+   "sections": [
+    {"h": "What to look for", "ul": ["Overgrown lawns or piled-up yard waste", "Boarded or broken windows and damaged roofs", "Stacked mail, flyers or newspapers", "Code-enforcement notices on the door", "Vacant look: no vehicles, no window coverings, no lights"]},
+    {"h": "Log everything on the spot", "p": ["Note the address and what you saw as you go. A phone photo of each house helps. If you wait until later, you will forget which house was which."]},
+    {"h": "Find the owner", "p": ["Look the address up in the county's records for the owner's name and mailing address, then skip trace for a phone number. A letter to the mailing address works even without a number."]},
+    {"h": "Stay safe and legal", "ul": ["Stay on public property. Don't walk onto a yard or enter a building.", "Don't leave marketing on mailboxes. In the US that is restricted to the postal service.", "Be honest about who you are when you reach the owner."]},
+    {"h": "Where BAP fits", "p": ["On your phone, BAP lets you search an address or use your location to see the owner details and distress signals on record, then save the property to your pipeline. Only properties in BAP's data show details; others can still be added."]}
+   ]
+  },
+  {
+   "slug": "direct-mail-for-motivated-sellers",
+   "title": "Direct mail for motivated sellers: getting started",
+   "desc": "How to pick a list, what to say and how often to follow up when you mail property owners.",
+   "published": "2026-11-10",
+   "tools": ["direct-mail", "distressed-property-leads", "real-estate-crm-pipeline"],
+   "intro": "Direct mail works for investors because it reaches owners you can't call and it asks for nothing but a reply. The risk is wasting money on a poor list or a weak message.",
+   "sections": [
+    {"h": "Start with the list", "p": ["Mail owners who show a reason to sell: delinquent taxes, code violations, vacancy, or an out-of-area mailing address. A smaller, targeted list beats a large generic one."]},
+    {"h": "Write a short, honest message", "ul": ["Say who you are and that you buy houses.", "Mention that you can close quickly and buy as-is, only if it is true for you.", "Give one clear way to reply: a phone number you answer.", "Don't make claims you can't back up, and follow your state's rules on wholesaling disclosures."]},
+    {"h": "Follow up", "p": ["A single mailing rarely gets a response from everyone who might sell. Plan several touches over a few weeks to months, and keep track of who has been mailed and when."]},
+    {"h": "Track what happens", "p": ["Log each reply and call. Over time you learn which lists and messages pay for themselves, and you can stop mailing the ones that don't."]},
+    {"h": "Where BAP fits", "p": ["BAP sends postcards and letters first class from inside the app, and puts follow-up reminders in your pipeline. Delivery times are estimates, and mail is pay as you go."]}
+   ]
+  }
+ ]
+}

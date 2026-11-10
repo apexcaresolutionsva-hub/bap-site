@@ -144,6 +144,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area
 .jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px} .jump a{text-decoration:none;background:var(--soft);padding:6px 13px;border-radius:99px;color:var(--fg);font-size:.92rem}
 .ql{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px} .ql a{text-decoration:none;background:var(--soft);padding:6px 13px;border-radius:99px;color:var(--fg);font-size:.92rem}
 section[id]{scroll-margin-top:64px}
+.prose h2{margin-top:26px} .prose p,.prose li{font-size:1.04rem} .prose ul{padding-left:22px}
 .statelist{columns:2 260px;column-gap:24px;margin:12px 0 0;padding:0;list-style:none} .statelist li{break-inside:avoid;padding:3px 0}
 """
 
@@ -208,7 +209,7 @@ def header_html():
 def footer_html():
     return ('<footer><div class="wrap"><span>© 2026 Apex Care Solutions VA LLC dba BAP</span>'
             f'<a href="{APP}/terms/">Terms</a><a href="{APP}/privacy/">Privacy</a><a href="{APP}/refunds/">Refunds</a>'
-            '<a href="/features/">Features</a><a href="/leads/">Leads by county</a>'
+            '<a href="/features/">Features</a><a href="/leads/">Leads by county</a><a href="/guides/">Guides</a>'
             f'<a href="{BOOK_A_CALL}" target="_blank" rel="noopener">Book a call</a>'
             '<a href="mailto:support@buybap.com">support@buybap.com</a><span>469-224-1122</span>'
             '<span>5245 Cleveland St, Ste 204, Virginia Beach, VA 23462</span></div>'
@@ -299,6 +300,44 @@ def features_page(feat, stats, v):
                 "/features/", body)
 
 
+def guide_pages(feat, rows):
+    """Plain-English how-to guides. Each one links to the tool pages it relates to and to the county index."""
+    data = json.loads((ROOT / "data" / "guides.json").read_text(encoding="utf-8"))["guides"]
+    tools = {t["slug"]: t for g in feat["groups"] for t in g["tools"] if t.get("slug")}
+    pages = {}
+    for g in data:
+        secs = []
+        for s in g["sections"]:
+            inner = "".join(f"<p>{esc(x)}</p>" for x in s.get("p", []))
+            if s.get("ul"):
+                inner += "<ul>" + "".join(f"<li>{esc(x)}</li>" for x in s["ul"]) + "</ul>"
+            secs.append(f"<h2>{esc(s['h'])}</h2>{inner}")
+        rel = []
+        for sl in g["tools"]:
+            if sl not in tools:
+                die(f"guides.json: unknown tool slug {sl!r} in {g['slug']}")
+            rel.append(f'<a href="/features/{sl}/">{esc(tools[sl]["detail"]["h1"])}</a>')
+        rel.append('<a href="/leads/">Leads by county</a>')
+        bc_ld, bc_html = crumbs([("Home", "/"), ("Guides", "/guides/"), (g["title"], f"/guides/{g['slug']}/")])
+        art = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"], "datePublished": g["published"],
+               "dateModified": g["published"], "author": {"@type": "Organization", "name": "BAP"},
+               "publisher": {"@type": "Organization", "name": "BAP", "logo": {"@type": "ImageObject", "url": SITE + "/icon-192.png"}},
+               "mainEntityOfPage": f"{SITE}/guides/{g['slug']}/", "image": SITE + "/og-image.png"}
+        utm = f"{APP}/?utm_source=seo&utm_medium=organic&utm_campaign=guide&utm_content={g['slug']}"
+        body = (f'<div class="wrap hero">{bc_html}<h1>{esc(g["title"])}</h1><p>{esc(g["intro"])}</p></div>'
+                f'<section><div class="wrap" style="max-width:760px"><div class="prose">{"".join(secs)}</div>'
+                f'<div class="row"><a class="btn" href="{utm}#demo" data-ev="try_demo">Try BAP free in the demo</a></div>'
+                f'<p class="small" style="margin-top:14px">General information, not legal, tax or financial advice. Rules vary by state; check yours.</p></div></section>'
+                f'<section class="soft"><div class="wrap"><h2>Related tools</h2><div class="ql">{"".join(rel)}</div></div></section>')
+        pages[g["slug"]] = page(f'{g["title"]} · BAP', g["desc"], f"/guides/{g['slug']}/", body, [bc_ld, art])
+    cards = "".join(f'<div class="card"><h3><a href="/guides/{g["slug"]}/" style="text-decoration:none">{esc(g["title"])}</a></h3><p>{esc(g["desc"])}</p></div>' for g in data)
+    bc_ld, _ = crumbs([("Home", "/"), ("Guides", "/guides/")])
+    index = page("Real estate investing guides · BAP", "Plain-English guides on finding distressed properties, skip tracing, deal math, direct mail and more.",
+                 "/guides/", f'<div class="wrap hero"><h1>Real estate investing guides</h1><p>Plain-English how-tos on finding distressed properties, reaching owners and running the numbers.</p></div>'
+                 f'<section class="soft"><div class="wrap"><div class="grid">{cards}</div></div></section>', [bc_ld])
+    return pages, index, data
+
+
 def tool_pages(feat, v):
     """One page per major tool, so each part of the app can rank for what people search for it, not just the homepage."""
     labels = feat["status_labels"]
@@ -359,7 +398,7 @@ def homepage(feat, stats, v):
     body = f'''<div class="wrap hero"><h1>Find distressed properties, run the numbers, and close.</h1>
 <p>BAP is the all-in-one app for real estate investors: distress leads from county and city records, a CRM, deal analysis, contracts, and the lenders, contractors and buyers to finish the deal.</p>
 <div class="row">{demo_btns("hero")}</div>
-<p class="small" style="margin-top:14px">Selling a house? <a href="/cash-offer/">Get a cash offer</a>. See <a href="/features/">everything BAP does</a>.</p>
+<p class="small" style="margin-top:14px">Selling a house? <a href="/cash-offer/">Get a cash offer</a>. See <a href="/features/">everything BAP does</a> or read the <a href="/guides/">investing guides</a>.</p>
 <div class="stats">{strip}</div><p class="small" style="margin-top:8px">Counts as of {updated}.</p></div>
 <section class="soft"><div class="wrap"><h2>What BAP does</h2><div class="grid">{"".join(cards)}</div><div class="row"><a class="btn ghost" href="/features/">See every tool</a></div></div></section>
 <section><div class="wrap"><h2>How it works</h2><div class="grid">
@@ -654,10 +693,14 @@ def main():
     # hand-written pages get none (a date that changes daily on every URL teaches Google to ignore lastmod entirely)
     data_date = str(stats.get("updated_at") or date.today().isoformat())[:10]
     generated = ["/", "/leads/"] + [f"/leads/{h}/" for h in hubs] + [f"/leads/{r['slug']}/" for r in rows]
+    gpages, gindex, gdata = guide_pages(feat, rows)
+    for slug, htm in gpages.items():
+        write(f"guides/{slug}/index.html", htm)
+    write("guides/index.html", gindex)
     tpages, tslugs = tool_pages(feat, v)
     for slug, htm in tpages.items():
         write(f"features/{slug}/index.html", htm)
-    static = ["/features/"] + [f"/features/{s}/" for s in tslugs] +["/" + p.replace("index.html", "") for p in static_pages if p != "404.html"]
+    static = ["/features/", "/guides/"] + [f"/guides/{g['slug']}/" for g in gdata] + [f"/features/{s}/" for s in tslugs] + ["/" + p.replace("index.html", "") for p in static_pages if p != "404.html"]
     urls = generated + static
     lm = lambda u: f"<lastmod>{data_date}</lastmod>" if u in generated else ""
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
