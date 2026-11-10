@@ -144,6 +144,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area
 .jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px} .jump a{text-decoration:none;background:var(--soft);padding:6px 13px;border-radius:99px;color:var(--fg);font-size:.92rem}
 .ql{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px} .ql a{text-decoration:none;background:var(--soft);padding:6px 13px;border-radius:99px;color:var(--fg);font-size:.92rem}
 section[id]{scroll-margin-top:64px}
+.herogrid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center} @media (max-width:860px){.herogrid{grid-template-columns:1fr}}
+.mock{margin:0;display:grid;gap:12px} .mock figcaption{font-size:.8rem;color:var(--muted)}
+.mcard{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 6px 24px rgba(0,0,0,.07)}
+.mhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.mscore{background:var(--accent);color:var(--accent-fg);font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:99px;white-space:nowrap}
+.mtag{border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:.75rem;padding:1px 9px;border-radius:99px}
+.mchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px} .mchips span{background:var(--soft);border-radius:99px;font-size:.78rem;padding:2px 10px}
+.mrows{display:grid;gap:5px} .mrows div{display:flex;justify-content:space-between;gap:10px;font-size:.92rem} .mrows span{color:var(--muted)}
+.mtoday{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:.9rem} .mtoday span{color:var(--muted)}
 .prose h2{margin-top:26px} .prose p,.prose li{font-size:1.04rem} .prose ul{padding-left:22px}
 .statelist{columns:2 260px;column-gap:24px;margin:12px 0 0;padding:0;list-style:none} .statelist li{break-inside:avoid;padding:3px 0}
 """
@@ -371,6 +380,21 @@ def tool_pages(feat, v):
 
 # ---------------------------------------------------------------- homepage
 
+
+# An illustration of the app with made-up sample data. It is deliberately NOT a screenshot: the demo shows real leads,
+# and real owner names must never be published. Every value here is fictional.
+PRODUCT_MOCK = (
+    '<figure class="mock" aria-label="Illustration of a BAP lead and deal summary, using sample data">'
+    '<div class="mcard"><div class="mhead"><b>1234 Example Ave</b><span class="mscore">Score 82</span></div>'
+    '<div class="mchips"><span>Tax delinquent</span><span>Absentee owner</span><span>Vacant</span></div>'
+    '<div class="mrows"><div><span>Taxes owed</span><b>$8,420</b></div><div><span>Years behind</span><b>3</b></div>'
+    '<div><span>Est. value</span><b>$186,000</b></div></div></div>'
+    '<div class="mcard"><div class="mhead"><b>Deal summary</b><span class="mtag">AI-assisted</span></div>'
+    '<div class="mrows"><div><span>Est. repairs</span><b>$24,000</b></div><div><span>Suggested max offer</span><b>$106,000</b></div>'
+    '<div><span>Key date</span><b>Tax sale in 45 days</b></div></div></div>'
+    '<div class="mcard mtoday"><b>Today</b><span>3 follow-ups due</span><span>2 replies waiting</span></div>'
+    '<figcaption>Illustration with sample data. Not a real property or person. Estimates only.</figcaption></figure>')
+
 def homepage(feat, stats, v):
     cards = []
     for g in feat["groups"]:
@@ -395,10 +419,10 @@ def homepage(feat, stats, v):
          "offers": [{"@type": "Offer", "name": p["name"], "price": str(p["monthly"]), "priceCurrency": "USD",
                      "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(p["monthly"]), "priceCurrency": "USD", "billingDuration": "P1M"}}
                     for p in stats["plans"]]}]
-    body = f'''<div class="wrap hero"><h1>Find distressed properties, run the numbers, and close.</h1>
+    body = f'''<div class="wrap hero"><div class="herogrid"><div><h1>Find distressed properties, run the numbers, and close.</h1>
 <p>BAP is the all-in-one app for real estate investors: distress leads from county and city records, a CRM, deal analysis, contracts, and the lenders, contractors and buyers to finish the deal.</p>
 <div class="row">{demo_btns("hero")}</div>
-<p class="small" style="margin-top:14px">Selling a house? <a href="/cash-offer/">Get a cash offer</a>. See <a href="/features/">everything BAP does</a> or read the <a href="/guides/">investing guides</a>.</p>
+<p class="small" style="margin-top:14px">Selling a house? <a href="/cash-offer/">Get a cash offer</a>. See <a href="/features/">everything BAP does</a> or read the <a href="/guides/">investing guides</a>.</p></div>{PRODUCT_MOCK}</div>
 <div class="stats">{strip}</div><p class="small" style="margin-top:8px">Counts as of {updated}.</p></div>
 <section class="soft"><div class="wrap"><h2>What BAP does</h2><div class="grid">{"".join(cards)}</div><div class="row"><a class="btn ghost" href="/features/">See every tool</a></div></div></section>
 <section><div class="wrap"><h2>How it works</h2><div class="grid">
