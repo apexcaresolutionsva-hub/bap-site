@@ -1,0 +1,366 @@
+[
+ {
+  "slug": "arapahoe-county-co",
+  "name": "Arapahoe County, CO",
+  "state": "CO",
+  "db_county": "Arapahoe",
+  "metro": "Aurora"
+ },
+ {
+  "slug": "baltimore-city-md",
+  "name": "Baltimore City, MD",
+  "state": "MD",
+  "db_county": "Baltimore",
+  "metro": "Baltimore"
+ },
+ {
+  "slug": "berks-county-pa",
+  "name": "Berks County, PA",
+  "state": "PA",
+  "db_county": "Berks",
+  "metro": "Reading"
+ },
+ {
+  "slug": "boulder-county-co",
+  "name": "Boulder County, CO",
+  "state": "CO",
+  "db_county": "Boulder",
+  "metro": "Boulder"
+ },
+ {
+  "slug": "bronx-county-ny",
+  "name": "Bronx County, NY",
+  "state": "NY",
+  "db_county": "Bronx",
+  "metro": "the Bronx"
+ },
+ {
+  "slug": "clark-county-nv",
+  "name": "Clark County, NV",
+  "state": "NV",
+  "db_county": "Clark",
+  "metro": "Las Vegas"
+ },
+ {
+  "slug": "clark-county-wa",
+  "name": "Clark County, WA",
+  "state": "WA",
+  "db_county": "Clark",
+  "metro": "Vancouver"
+ },
+ {
+  "slug": "cook-county-il",
+  "name": "Cook County, IL",
+  "state": "IL",
+  "db_county": "Cook",
+  "metro": "Chicago"
+ },
+ {
+  "slug": "cumberland-county-nc",
+  "name": "Cumberland County, NC",
+  "state": "NC",
+  "db_county": "Cumberland",
+  "metro": "Fayetteville"
+ },
+ {
+  "slug": "cuyahoga-county-oh",
+  "name": "Cuyahoga County, OH",
+  "state": "OH",
+  "db_county": "Cuyahoga",
+  "metro": "Cleveland"
+ },
+ {
+  "slug": "dallas-county-tx",
+  "name": "Dallas County, TX",
+  "state": "TX",
+  "db_county": "Dallas",
+  "metro": "Dallas"
+ },
+ {
+  "slug": "dekalb-county-ga",
+  "name": "DeKalb County, GA",
+  "state": "GA",
+  "db_county": "DeKalb",
+  "metro": "Atlanta"
+ },
+ {
+  "slug": "delaware-county-oh",
+  "name": "Delaware County, OH",
+  "state": "OH",
+  "db_county": "Delaware",
+  "metro": "Columbus north suburbs"
+ },
+ {
+  "slug": "erie-county-ny",
+  "name": "Erie County, NY",
+  "state": "NY",
+  "db_county": "Erie",
+  "metro": "Buffalo"
+ },
+ {
+  "slug": "hamilton-county-oh",
+  "name": "Hamilton County, OH",
+  "state": "OH",
+  "db_county": "Hamilton",
+  "metro": "Cincinnati"
+ },
+ {
+  "slug": "hartford-county-ct",
+  "name": "Hartford County, CT",
+  "state": "CT",
+  "db_county": "Hartford",
+  "metro": "Hartford"
+ },
+ {
+  "slug": "hennepin-county-mn",
+  "name": "Hennepin County, MN",
+  "state": "MN",
+  "db_county": "Hennepin",
+  "metro": "Minneapolis"
+ },
+ {
+  "slug": "jackson-county-mo",
+  "name": "Jackson County, MO",
+  "state": "MO",
+  "db_county": "Jackson",
+  "metro": "Kansas City"
+ },
+ {
+  "slug": "jefferson-county-ky",
+  "name": "Jefferson County, KY",
+  "state": "KY",
+  "db_county": "Jefferson",
+  "metro": "Louisville"
+ },
+ {
+  "slug": "king-county-wa",
+  "name": "King County, WA",
+  "state": "WA",
+  "db_county": "King",
+  "metro": "Seattle"
+ },
+ {
+  "slug": "los-angeles-county-ca",
+  "name": "Los Angeles County, CA",
+  "state": "CA",
+  "db_county": "Los Angeles",
+  "metro": "Los Angeles"
+ },
+ {
+  "slug": "maricopa-county-az",
+  "name": "Maricopa County, AZ",
+  "state": "AZ",
+  "db_county": "Maricopa",
+  "metro": "Phoenix"
+ },
+ {
+  "slug": "mecklenburg-county-nc",
+  "name": "Mecklenburg County, NC",
+  "state": "NC",
+  "db_county": "Mecklenburg",
+  "metro": "Charlotte"
+ },
+ {
+  "slug": "miami-dade-county-fl",
+  "name": "Miami-Dade County, FL",
+  "state": "FL",
+  "db_county": "Miami-Dade",
+  "metro": "Miami"
+ },
+ {
+  "slug": "montgomery-county-al",
+  "name": "Montgomery County, AL",
+  "state": "AL",
+  "db_county": "Montgomery",
+  "metro": "Montgomery"
+ },
+ {
+  "slug": "montgomery-county-md",
+  "name": "Montgomery County, MD",
+  "state": "MD",
+  "db_county": "Montgomery",
+  "metro": "Rockville"
+ },
+ {
+  "slug": "new-york-county-ny",
+  "name": "New York County (Manhattan), NY",
+  "state": "NY",
+  "db_county": "New York",
+  "metro": "Manhattan"
+ },
+ {
+  "slug": "norfolk-va",
+  "name": "Norfolk, VA",
+  "state": "VA",
+  "db_county": "Norfolk",
+  "metro": "Norfolk"
+ },
+ {
+  "slug": "orleans-parish-la",
+  "name": "Orleans Parish, LA",
+  "state": "LA",
+  "db_county": "Orleans",
+  "metro": "New Orleans"
+ },
+ {
+  "slug": "philadelphia-county-pa",
+  "name": "Philadelphia County, PA",
+  "state": "PA",
+  "db_county": "Philadelphia",
+  "metro": "Philadelphia"
+ },
+ {
+  "slug": "pierce-county-wa",
+  "name": "Pierce County, WA",
+  "state": "WA",
+  "db_county": "Pierce",
+  "metro": "Tacoma"
+ },
+ {
+  "slug": "queens-county-ny",
+  "name": "Queens County, NY",
+  "state": "NY",
+  "db_county": "Queens",
+  "metro": "Queens"
+ },
+ {
+  "slug": "richland-county-sc",
+  "name": "Richland County, SC",
+  "state": "SC",
+  "db_county": "Richland",
+  "metro": "Columbia"
+ },
+ {
+  "slug": "san-mateo-county-ca",
+  "name": "San Mateo County, CA",
+  "state": "CA",
+  "db_county": "San Mateo",
+  "metro": "San Mateo"
+ },
+ {
+  "slug": "tarrant-county-tx",
+  "name": "Tarrant County, TX",
+  "state": "TX",
+  "db_county": "Tarrant",
+  "metro": "Fort Worth"
+ },
+ {
+  "slug": "travis-county-tx",
+  "name": "Travis County, TX",
+  "state": "TX",
+  "db_county": "Travis",
+  "metro": "Austin"
+ },
+ {
+  "slug": "virginia-beach-va",
+  "name": "Virginia Beach, VA",
+  "state": "VA",
+  "db_county": "Virginia Beach",
+  "metro": "Virginia Beach"
+ },
+ {
+  "slug": "wayne-county-mi",
+  "name": "Wayne County, MI",
+  "state": "MI",
+  "db_county": "Wayne",
+  "metro": "Detroit"
+ },
+ {
+  "slug": "harris-county-tx",
+  "name": "Harris County, TX",
+  "state": "TX",
+  "db_county": "Harris",
+  "metro": "Houston"
+ },
+ {
+  "slug": "bexar-county-tx",
+  "name": "Bexar County, TX",
+  "state": "TX",
+  "db_county": "Bexar",
+  "metro": "San Antonio"
+ },
+ {
+  "slug": "kings-county-ny",
+  "name": "Kings County, NY",
+  "state": "NY",
+  "db_county": "Kings",
+  "metro": "Brooklyn"
+ },
+ {
+  "slug": "cobb-county-ga",
+  "name": "Cobb County, GA",
+  "state": "GA",
+  "db_county": "Cobb",
+  "metro": "Marietta"
+ },
+ {
+  "slug": "adams-county-co",
+  "name": "Adams County, CO",
+  "state": "CO",
+  "db_county": "Adams",
+  "metro": "Denver"
+ },
+ {
+  "slug": "polk-county-fl",
+  "name": "Polk County, FL",
+  "state": "FL",
+  "db_county": "Polk",
+  "metro": "Lakeland"
+ },
+ {
+  "slug": "pulaski-county-ar",
+  "name": "Pulaski County, AR",
+  "state": "AR",
+  "db_county": "Pulaski",
+  "metro": "Little Rock"
+ },
+ {
+  "slug": "santa-clara-county-ca",
+  "name": "Santa Clara County, CA",
+  "state": "CA",
+  "db_county": "Santa Clara",
+  "metro": "San Jose"
+ },
+ {
+  "slug": "shelby-county-in",
+  "name": "Shelby County, IN",
+  "state": "IN",
+  "db_county": "Shelby",
+  "metro": "Shelbyville"
+ },
+ {
+  "slug": "wake-county-nc",
+  "name": "Wake County, NC",
+  "state": "NC",
+  "db_county": "Wake",
+  "metro": "Raleigh"
+ },
+ {
+  "slug": "onondaga-county-ny",
+  "name": "Onondaga County, NY",
+  "state": "NY",
+  "db_county": "Onondaga",
+  "metro": "Syracuse"
+ },
+ {
+  "slug": "middlesex-county-ma",
+  "name": "Middlesex County, MA",
+  "state": "MA",
+  "db_county": "Middlesex",
+  "metro": "Cambridge"
+ },
+ {
+  "slug": "allegheny-county-pa",
+  "name": "Allegheny County, PA",
+  "state": "PA",
+  "db_county": "Allegheny",
+  "metro": "Pittsburgh"
+ },
+ {
+  "slug": "columbia-county-fl",
+  "name": "Columbia County, FL",
+  "state": "FL",
+  "db_county": "Columbia",
+  "metro": "Lake City"
+ }
+]

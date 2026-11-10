@@ -1,0 +1,216 @@
+{
+ "_note": "Every tool a BAP member can actually use today, with an honest status. Numbers in {{double braces}} come from the database at build time. When the app ships a visible tool, add it here and the homepage and /features/ page both update. Do not list anything members cannot use yet.",
+ "status_labels": {
+  "included": "Included",
+  "plan": "Plan allowance",
+  "payg": "Pay as you go",
+  "addon": "Add-on",
+  "early": "Early access",
+  "tx": "Texas + national forms",
+  "free": "Free"
+ },
+ "groups": [
+  {
+   "id": "find",
+   "title": "Find the deal",
+   "blurb": "Public-record distress leads, a map to work them on, and the tools to narrow thousands down to the few worth calling.",
+   "tools": [
+    {
+     "name": "Distress leads from county and city records",
+     "status": "included",
+     "text": "Up to {{properties_fmt}} properties across {{counties}} counties in {{states}} states, with signals like tax delinquent, pre-foreclosure, vacant, code violations and tax sales. Records are updated as each county publishes them, and the signals available vary by county. Unlimited on every paid plan, subject to fair use."
+    },
+    {
+     "name": "On-demand nationwide leads",
+     "status": "plan",
+     "text": "Pre-foreclosure, probate and tax-lien leads for most US counties, including where BAP doesn't collect records yet. Availability varies by county. Every paid plan includes a monthly allowance, then {{price_national_lead}} each."
+    },
+    {
+     "name": "Stackable filters and county search",
+     "status": "included",
+     "text": "Combine signals like tax delinquent + absentee + senior, type a county or state, and filter vacant land."
+    },
+    {
+     "name": "Map, heat map and draw-an-area",
+     "status": "included",
+     "text": "See where the distress is, jump to any market, or draw a shape to see every lead inside it."
+    },
+    {
+     "name": "Driving for dollars",
+     "status": "included",
+     "text": "Standing in front of a house? Search the address or use your location to see its owner, signals and numbers."
+    },
+    {
+     "name": "Saved lists and list imports",
+     "status": "included",
+     "text": "Save a search, or bring your own lists and properties into your pipeline."
+    },
+    {
+     "name": "Deals for sale",
+     "status": "included",
+     "text": "Browse {{deals_for_sale_fmt}} deals from public listings and member posts, and post your own free. Listings change often and aren't guaranteed to be available."
+    },
+    {
+     "name": "House photos",
+     "status": "included",
+     "text": "A Street View photo of the property for members, where one is available."
+    }
+   ]
+  },
+  {
+   "id": "reach",
+   "title": "Reach the owner",
+   "blurb": "Find the owner's number, then call, text and mail them, with the rules checked for you.",
+   "tools": [
+    {
+     "name": "Skip tracing",
+     "status": "plan",
+     "text": "Owner phones and emails where available, with Do Not Call, litigator and deceased flags. A contact isn't found for every owner. Every paid plan includes a monthly allowance, then {{price_skiptrace}} each."
+    },
+    {
+     "name": "Call from the app",
+     "status": "included",
+     "text": "One tap opens your phone's dialer, after BAP checks Do Not Call, opt-outs, litigator flags and calling hours (9am to 8pm, Monday to Saturday, in the owner's time zone). These checks rely on available data and don't replace your own compliance with calling laws."
+    },
+    {
+     "name": "Text sellers who gave permission",
+     "status": "addon",
+     "text": "Texting from your own registered business number, with STOP handling and optional AI-assisted replies that hand off to you. Carriers require a one-time business registration; approval is up to the carriers and typically takes about 1 to 3 weeks."
+    },
+    {
+     "name": "Business number, inbox and voicemail",
+     "status": "addon",
+     "text": "Calls forwarded to your cell with screening, missed-call text-back, voicemail transcripts that find the property address, and one inbox for texts and voicemails."
+    },
+    {
+     "name": "Direct mail",
+     "status": "payg",
+     "text": "Postcards and letters sent for you, from {{price_postcard_low}} first class, with follow-up reminders. Delivery times are estimates. Team plan members get 10% off mail."
+    },
+    {
+     "name": "Power dialer",
+     "status": "early",
+     "text": "Dial a whole list from your computer or your phone. Built to skip most voicemails and connect you with people who answer; detection isn't perfect. In early access and subject to availability: ask us to join."
+    }
+   ]
+  },
+  {
+   "id": "analyze",
+   "title": "Run the numbers",
+   "blurb": "Know what it's worth, what it needs and what to offer before you call.",
+   "tools": [
+    {
+     "name": "Value and rent estimates",
+     "status": "payg",
+     "text": "Estimated value and rent ranges for a property, {{price_valuation}} each for members. Estimates are not appraisals and may be inaccurate."
+    },
+    {
+     "name": "AI deal analysis",
+     "status": "plan",
+     "text": "A one-screen summary: estimated repairs, a suggested maximum offer and the key deadline. AI output can contain errors; it is decision support, not advice. Pro and Team include a monthly allowance, then {{price_ai}} each."
+    },
+    {
+     "name": "Repair budgets and offer math",
+     "status": "included",
+     "text": "Build a repair budget, run flip or rental numbers, and see estimated profit and a suggested maximum offer. Results depend on the numbers you enter."
+    },
+    {
+     "name": "Lenders and loan packages",
+     "status": "included",
+     "text": "Up to the top 5 lenders near a ZIP, from a directory of {{lenders_and_contractors_fmt}} lenders and contractors, with lending styles in plain English. Listings are not endorsements, and rates and terms are set by each lender. Send one loan package to several lenders."
+    }
+   ]
+  },
+  {
+   "id": "close",
+   "title": "Close and sell",
+   "blurb": "Contracts, buyers and contractors to finish the deal.",
+   "tools": [
+    {
+     "name": "Contracts with e-sign",
+     "status": "tx",
+     "text": "Purchase, assignment, joint-venture and option templates with e-sign: {{texas_contract_templates}} Texas-specific forms plus national forms, with more states planned. Templates are not legal advice and may not fit every deal or state. Have your attorney review every contract."
+    },
+    {
+     "name": "Cash buyers and deal pages",
+     "status": "included",
+     "text": "Keep your buyers list, match deals to buyers, and publish a shareable page for each deal."
+    },
+    {
+     "name": "Contractors and bid requests",
+     "status": "included",
+     "text": "Find contractors by trade near a ZIP and send a bid request that includes your scope of work. Listings are not endorsements, and availability and pricing are up to each contractor."
+    }
+   ]
+  },
+  {
+   "id": "run",
+   "title": "Run your day",
+   "blurb": "A home screen for what to do now, and a pipeline built for working many leads at once.",
+   "tools": [
+    {
+     "name": "Today screen",
+     "status": "included",
+     "text": "Follow-ups that are due, call-backs, replies waiting and a checklist for your first deal."
+    },
+    {
+     "name": "Pipeline with bulk actions",
+     "status": "included",
+     "text": "Stages, follow-up dates, an Overdue view, and checkboxes to move or call many leads at once. Leads whose auction date has passed are tucked away."
+    },
+    {
+     "name": "Teams",
+     "status": "plan",
+     "text": "The Team plan gives 3 users one shared account, with invite links."
+    },
+    {
+     "name": "Practice mode and a free demo",
+     "status": "free",
+     "text": "Try every task with nothing saved, sent or charged. No account needed for the demo."
+    },
+    {
+     "name": "On your phone",
+     "status": "included",
+     "text": "Install it from your phone's browser and it opens like an app, with light and dark modes."
+    }
+   ]
+  },
+  {
+   "id": "more",
+   "title": "For sellers and partners",
+   "blurb": "BAP also helps the people on the other side of the deal.",
+   "tools": [
+    {
+     "name": "Sell your house for cash",
+     "status": "free",
+     "text": "Tell us about the property and we aim to respond within one business day. Offers are not guaranteed and depend on the property and market.",
+     "href": "/cash-offer/"
+    },
+    {
+     "name": "Post a deal",
+     "status": "free",
+     "text": "Wholesalers can post a deal free to BAP's cash buyers.",
+     "href": "/post-a-deal/"
+    },
+    {
+     "name": "Funding help",
+     "status": "free",
+     "text": "See which loan types may fit your flip, rental or wholesale deal and roughly how much cash you'd need to close. BAP is not a lender, and examples are estimates, not offers.",
+     "href": "/funding/"
+    },
+    {
+     "name": "List your lending or contracting business",
+     "status": "free",
+     "text": "Lenders and contractors can list their business free and may be found by investors near them. Listing doesn't guarantee leads or work.",
+     "href": "https://app.buybap.com/#join"
+    },
+    {
+     "name": "Deal desk",
+     "status": "free",
+     "text": "Send a deal to sell, fund or get a second opinion, and we aim to reply within one business day.",
+     "href": "/#deal-desk"
+    }
+   ]
+  }
+ ]
+}
