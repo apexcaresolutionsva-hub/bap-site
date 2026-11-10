@@ -18,12 +18,50 @@
     {
      "name": "Distress leads from county and city records",
      "status": "included",
-     "text": "Up to {{properties_fmt}} properties across {{counties}} counties in {{states}} states, with signals like tax delinquent, pre-foreclosure, vacant, code violations and tax sales. Records are updated as each county publishes them, and the signals available vary by county. Unlimited on every paid plan, subject to fair use."
+     "text": "Up to {{properties_fmt}} properties across {{counties}} counties in {{states}} states, with signals like tax delinquent, pre-foreclosure, vacant, code violations and tax sales. Records are updated as each county publishes them, and the signals available vary by county. Unlimited on every paid plan, subject to fair use.",
+     "slug": "distressed-property-leads",
+     "detail": {
+      "h1": "Distressed property leads from public records",
+      "intro": "BAP collects property records from county and city sources and flags the ones showing distress: tax delinquency, pre-foreclosure, vacancy, code violations and upcoming tax sales. Each lead lists the signals behind it so you can decide where to spend your time.",
+      "steps": [
+       "Pick a market or county, or search by state.",
+       "Filter by signal, such as tax delinquent plus absentee owner plus senior, to narrow thousands of leads to the ones worth a call.",
+       "Open a lead to see the owner details the county publishes and why it was flagged.",
+       "Save it to a list or your pipeline, skip trace the owner and start outreach."
+      ],
+      "good": [
+       "Wholesalers and flippers who want motivated-seller leads without buying a separate list for every county.",
+       "Investors who work one or two target counties and want them refreshed as records change."
+      ],
+      "keep": [
+       "Coverage and signals vary by county, and records are only as current as each county's publishing.",
+       "A flagged property is not a guaranteed seller. Verify details before you rely on them."
+      ]
+     }
     },
     {
      "name": "On-demand nationwide leads",
      "status": "plan",
-     "text": "Pre-foreclosure, probate and tax-lien leads for most US counties, including where BAP doesn't collect records yet. Availability varies by county. Every paid plan includes a monthly allowance, then {{price_national_lead}} each."
+     "text": "Pre-foreclosure, probate and tax-lien leads for most US counties, including where BAP doesn't collect records yet. Availability varies by county. Every paid plan includes a monthly allowance, then {{price_national_lead}} each.",
+     "slug": "nationwide-leads",
+     "detail": {
+      "h1": "On-demand nationwide leads",
+      "intro": "Outside the counties BAP collects itself, you can request pre-foreclosure, probate and tax-lien leads for most US counties. They come from a national property-records provider and land in your account like any other lead.",
+      "steps": [
+       "Choose a county and the type of lead you want.",
+       "BAP pulls matching properties from the provider.",
+       "Each lead counts against your plan's monthly allowance, then the pay-as-you-go price.",
+       "Work them in your pipeline like any other lead."
+      ],
+      "good": [
+       "Investors expanding into a new market before BAP covers it directly.",
+       "Anyone chasing probate or pre-foreclosure leads, which county tax rolls don't show."
+      ],
+      "keep": [
+       "Availability varies by county and by the provider's data.",
+       "Each plan includes a monthly allowance; extra leads are billed from prepaid credits."
+      ]
+     }
     },
     {
      "name": "Stackable filters and county search",
@@ -33,12 +71,46 @@
     {
      "name": "Map, heat map and draw-an-area",
      "status": "included",
-     "text": "See where the distress is, jump to any market, or draw a shape to see every lead inside it."
+     "text": "See where the distress is, jump to any market, or draw a shape to see every lead inside it.",
+     "slug": "distressed-property-map",
+     "detail": {
+      "h1": "Distressed property map",
+      "intro": "See where the distress is. BAP's map shows leads by location with a heat map, lets you jump to any market and lets you draw an area to see every lead inside it.",
+      "steps": [
+       "Open the map and pick a market.",
+       "Switch on the heat map to see concentration.",
+       "Draw an area around a neighborhood.",
+       "Open any lead from the map."
+      ],
+      "good": [
+       "Investors targeting specific neighborhoods rather than whole counties."
+      ],
+      "keep": [
+       "Only properties in BAP's data appear on the map."
+      ]
+     }
     },
     {
      "name": "Driving for dollars",
      "status": "included",
-     "text": "Standing in front of a house? Search the address or use your location to see its owner, signals and numbers."
+     "text": "Standing in front of a house? Search the address or use your location to see its owner, signals and numbers.",
+     "slug": "driving-for-dollars",
+     "detail": {
+      "h1": "Driving for dollars with BAP",
+      "intro": "Standing in front of a house? Search the address or use your location and BAP shows the owner, the distress signals on record and the numbers, so you can decide on the spot whether to pursue it.",
+      "steps": [
+       "Open BAP on your phone.",
+       "Search the address or use your location.",
+       "See the owner details and signals on record.",
+       "Save the property to your pipeline."
+      ],
+      "good": [
+       "Investors who scout neighborhoods in person."
+      ],
+      "keep": [
+       "Only properties in BAP's data show details; others can still be added."
+      ]
+     }
     },
     {
      "name": "Saved lists and list imports",
@@ -65,7 +137,26 @@
     {
      "name": "Skip tracing",
      "status": "plan",
-     "text": "Owner phones and emails where available, with Do Not Call, litigator and deceased flags. A contact isn't found for every owner. Every paid plan includes a monthly allowance, then {{price_skiptrace}} each."
+     "text": "Owner phones and emails where available, with Do Not Call, litigator and deceased flags. A contact isn't found for every owner. Every paid plan includes a monthly allowance, then {{price_skiptrace}} each.",
+     "slug": "skip-tracing",
+     "detail": {
+      "h1": "Skip tracing for real estate investors",
+      "intro": "Skip tracing finds the owner's phone numbers and emails so you can reach them. BAP runs it from the lead screen and flags numbers on the Do Not Call list, known litigators and deceased owners before you dial.",
+      "steps": [
+       "Open a lead and tap skip trace.",
+       "BAP returns the contact details it finds, with flags beside each number.",
+       "Call or text from the app, or add the owner to a mail campaign."
+      ],
+      "good": [
+       "Anyone who works leads by phone and wants to avoid Do Not Call numbers.",
+       "Teams that want a monthly allowance of traces instead of buying them one at a time."
+      ],
+      "keep": [
+       "A contact isn't found for every owner.",
+       "Flags help, but you remain responsible for following calling and texting laws.",
+       "Each plan includes a monthly allowance, then a per-trace price."
+      ]
+     }
     },
     {
      "name": "Call from the app",
@@ -85,7 +176,26 @@
     {
      "name": "Direct mail",
      "status": "payg",
-     "text": "Postcards and letters sent for you, from {{price_postcard_low}} first class, with follow-up reminders. Delivery times are estimates. Team plan members get 10% off mail."
+     "text": "Postcards and letters sent for you, from {{price_postcard_low}} first class, with follow-up reminders. Delivery times are estimates. Team plan members get 10% off mail.",
+     "slug": "direct-mail",
+     "detail": {
+      "h1": "Direct mail to property owners",
+      "intro": "Send postcards and letters to owners from inside BAP, without printing, stamps or a mail house. Pick a lead or a list, choose a format, and BAP sends it and reminds you to follow up.",
+      "steps": [
+       "Select the leads or a saved list.",
+       "Choose a postcard or letter and write your message.",
+       "BAP prints and mails it first class.",
+       "Follow-up reminders appear in your pipeline."
+      ],
+      "good": [
+       "Investors who want a mailing channel alongside calls.",
+       "Anyone working a list of absentee or tax-delinquent owners."
+      ],
+      "keep": [
+       "Delivery times are estimates.",
+       "Mail is pay as you go; Team plan members get 10% off."
+      ]
+     }
     },
     {
      "name": "Power dialer",
@@ -102,12 +212,46 @@
     {
      "name": "Value and rent estimates",
      "status": "payg",
-     "text": "Estimated value and rent ranges for a property, {{price_valuation}} each for members. Estimates are not appraisals and may be inaccurate."
+     "text": "Estimated value and rent ranges for a property, {{price_valuation}} each for members. Estimates are not appraisals and may be inaccurate.",
+     "slug": "value-and-rent-estimates",
+     "detail": {
+      "h1": "Value and rent estimates",
+      "intro": "Get an estimated value and rent range for a property in one tap, so you can judge a deal before you call. Estimates feed into BAP's repair budget and offer math.",
+      "steps": [
+       "Open the property.",
+       "Request a value and rent estimate.",
+       "Use the ranges in your numbers or in an AI deal analysis."
+      ],
+      "good": [
+       "Investors screening many properties quickly."
+      ],
+      "keep": [
+       "Estimates are not appraisals and may be inaccurate. Confirm with comps or a professional before you make an offer."
+      ]
+     }
     },
     {
      "name": "AI deal analysis",
      "status": "plan",
-     "text": "A one-screen summary: estimated repairs, a suggested maximum offer and the key deadline. AI output can contain errors; it is decision support, not advice. Pro and Team include a monthly allowance, then {{price_ai}} each."
+     "text": "A one-screen summary: estimated repairs, a suggested maximum offer and the key deadline. AI output can contain errors; it is decision support, not advice. Pro and Team include a monthly allowance, then {{price_ai}} each.",
+     "slug": "ai-deal-analysis",
+     "detail": {
+      "h1": "AI deal analysis",
+      "intro": "The Work this lead button pulls estimated value, rent and comps and writes a one-screen summary: estimated repairs, a suggested maximum offer and the key deadline. It's decision support to speed up your first pass.",
+      "steps": [
+       "Open a lead and choose Work this lead.",
+       "BAP gathers value, rent and comps.",
+       "You get a short summary with repairs, a suggested max offer and deadlines.",
+       "Adjust the numbers with your own judgment."
+      ],
+      "good": [
+       "Investors who review many leads and want a fast first look before spending time."
+      ],
+      "keep": [
+       "AI output can contain errors and is not advice.",
+       "Pro and Team include a monthly allowance, then a per-analysis price."
+      ]
+     }
     },
     {
      "name": "Repair budgets and offer math",
@@ -117,7 +261,26 @@
     {
      "name": "Lenders and loan packages",
      "status": "included",
-     "text": "Up to the top 5 lenders near a ZIP, from a directory of {{lenders_and_contractors_fmt}} lenders and contractors, with lending styles in plain English. Listings are not endorsements, and rates and terms are set by each lender. Send one loan package to several lenders."
+     "text": "Up to the top 5 lenders near a ZIP, from a directory of {{lenders_and_contractors_fmt}} lenders and contractors, with lending styles in plain English. Listings are not endorsements, and rates and terms are set by each lender. Send one loan package to several lenders.",
+     "slug": "lenders-and-loan-packages",
+     "detail": {
+      "h1": "Lenders and loan packages",
+      "intro": "Find lenders near any ZIP code in BAP's directory, read their lending styles in plain English and send one loan package to several of them at once.",
+      "steps": [
+       "Enter a ZIP code.",
+       "See up to the top 5 lenders nearby with plain-English lending styles.",
+       "Attach your deal details as a loan package.",
+       "Send it to several lenders at once."
+      ],
+      "good": [
+       "Flippers and rental investors who need funding fast.",
+       "Wholesalers who want to point buyers to financing."
+      ],
+      "keep": [
+       "Listings are not endorsements, and rates and terms are set by each lender.",
+       "BAP is not a lender."
+      ]
+     }
     }
    ]
   },
@@ -129,12 +292,47 @@
     {
      "name": "Contracts with e-sign",
      "status": "tx",
-     "text": "Purchase, assignment, joint-venture and option templates with e-sign: {{texas_contract_templates}} Texas-specific forms plus national forms, with more states planned. Templates are not legal advice and may not fit every deal or state. Have your attorney review every contract."
+     "text": "Purchase, assignment, joint-venture and option templates with e-sign: {{texas_contract_templates}} Texas-specific forms plus national forms, with more states planned. Templates are not legal advice and may not fit every deal or state. Have your attorney review every contract.",
+     "slug": "real-estate-contracts",
+     "detail": {
+      "h1": "Real estate contracts with e-signing",
+      "intro": "BAP includes purchase, assignment, joint-venture and option templates you fill in and send for e-signature, so the paperwork lives next to the deal. There are Texas-specific forms plus national forms, with more states planned.",
+      "steps": [
+       "Open a deal and pick a template.",
+       "Fill in the details.",
+       "Send it for e-signature.",
+       "The signed copy stays with the deal."
+      ],
+      "good": [
+       "Wholesalers who need assignment and purchase contracts quickly."
+      ],
+      "keep": [
+       "Templates are not legal advice and may not fit every deal or state.",
+       "Have your attorney review every contract before you use it."
+      ]
+     }
     },
     {
      "name": "Cash buyers and deal pages",
      "status": "included",
-     "text": "Keep your buyers list, match deals to buyers, and publish a shareable page for each deal."
+     "text": "Keep your buyers list, match deals to buyers, and publish a shareable page for each deal.",
+     "slug": "cash-buyers-and-deal-pages",
+     "detail": {
+      "h1": "Cash buyers list and deal pages",
+      "intro": "Keep your buyers list in BAP, match deals to the right buyers and publish a shareable page for each deal, so selling a contract doesn't live in a spreadsheet.",
+      "steps": [
+       "Add your buyers and what they want.",
+       "Create a deal page for a property you have under contract.",
+       "Share the page with matching buyers.",
+       "Track who responded in your pipeline."
+      ],
+      "good": [
+       "Wholesalers who assign contracts to cash buyers."
+      ],
+      "keep": [
+       "BAP supports your marketing; it doesn't guarantee a buyer."
+      ]
+     }
     },
     {
      "name": "Contractors and bid requests",
@@ -156,7 +354,24 @@
     {
      "name": "Pipeline with bulk actions",
      "status": "included",
-     "text": "Stages, follow-up dates, an Overdue view, and checkboxes to move or call many leads at once. Leads whose auction date has passed are tucked away."
+     "text": "Stages, follow-up dates, an Overdue view, and checkboxes to move or call many leads at once. Leads whose auction date has passed are tucked away.",
+     "slug": "real-estate-crm-pipeline",
+     "detail": {
+      "h1": "Real estate CRM and pipeline",
+      "intro": "BAP's pipeline tracks every lead by stage with follow-up dates, an Overdue view and checkboxes to move or call many leads at once. The Today screen shows what's due right now.",
+      "steps": [
+       "Move leads through stages as conversations progress.",
+       "Set follow-up dates; overdue leads surface automatically.",
+       "Select several leads to move them or call them together.",
+       "Use the Today screen to start each day."
+      ],
+      "good": [
+       "Solo investors and small teams replacing spreadsheets and sticky notes."
+      ],
+      "keep": [
+       "Teams: the Team plan gives 3 users one shared account."
+      ]
+     }
     },
     {
      "name": "Teams",

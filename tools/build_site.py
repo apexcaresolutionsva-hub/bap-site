@@ -189,6 +189,14 @@ def head_tags(title, desc, path=None, jsonld=None, noindex=False):
     return "\n".join(out)
 
 
+def crumbs(items):
+    """items: [(name, path)] from the homepage down. Returns a BreadcrumbList for Google plus a visible trail."""
+    ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + pth} for i, (n, pth) in enumerate(items)]}
+    trail = " › ".join(f'<a href="{pth}">{esc(n)}</a>' for n, pth in items[:-1]) + f" › {esc(items[-1][0])}"
+    return ld, f'<p class="small" style="margin:0 0 10px">{trail}</p>'
+
+
 def header_html():
     return ('<header><div class="wrap"><a class="logo" href="/"><img src="/icon-192.png" alt="" width="30" height="30">BAP</a><nav>'
             '<a href="/features/">Features</a><a href="/leads/">Leads by county</a><a href="/#pricing">Pricing</a>'
@@ -265,6 +273,8 @@ def load_features(v):
 
 def tool_card(tool, labels):
     link = f'<a class="more" href="{esc(tool["href"])}">Open →</a>' if tool.get("href") else ""
+    if tool.get("slug"):
+        link = f'<a class="more" href="/features/{tool["slug"]}/">Learn more →</a>'
     tag = f'<span class="tag {tool["status"]}">{esc(labels[tool["status"]])}</span>'
     return f'<div class="card tool">{tag}<h3>{esc(tool["name"])}</h3><p>{esc(tool["text"])}</p>{link}</div>'
 
@@ -289,12 +299,44 @@ def features_page(feat, stats, v):
                 "/features/", body)
 
 
+def tool_pages(feat, v):
+    """One page per major tool, so each part of the app can rank for what people search for it, not just the homepage."""
+    labels = feat["status_labels"]
+    pages, slugs = {}, []
+    for g in feat["groups"]:
+        siblings = [t for t in g["tools"] if t.get("slug")]
+        for t in siblings:
+            d = t["detail"]
+            slug = t["slug"]
+            slugs.append(slug)
+            steps = "".join(f'<div class="card"><h3>{i}.</h3><p>{esc(s)}</p></div>' for i, s in enumerate(d["steps"], 1))
+            good = "".join(f"<li>{esc(x)}</li>" for x in d["good"])
+            keep = "".join(f"<li>{esc(x)}</li>" for x in d["keep"])
+            related = "".join(f'<a href="/features/{o["slug"]}/">{esc(o["detail"]["h1"])}</a>' for o in siblings if o is not t)
+            related += f'<a href="/features/#{g["id"]}">All {esc(g["title"]).lower()} tools</a>'
+            bc_ld, bc_html = crumbs([("Home", "/"), ("Features", "/features/"), (d["h1"], f"/features/{slug}/")])
+            utm = f"{APP}/?utm_source=seo&utm_medium=organic&utm_campaign=feature&utm_content={slug}"
+            body = (f'<div class="wrap hero">{bc_html}<h1>{esc(d["h1"])}</h1><p>{esc(d["intro"])}</p>'
+                    f'<p><span class="tag {t["status"]}">{esc(labels[t["status"]])}</span> <span class="small">{esc(t["text"])}</span></p>'
+                    f'<div class="row"><a class="btn" href="{utm}#demo" data-ev="try_demo">Try it in the free demo</a>'
+                    f'<a class="btn ghost" href="{utm}" data-ev="open_app">Open BAP</a></div></div>'
+                    f'<section class="soft"><div class="wrap"><h2>How it works</h2><div class="grid">{steps}</div></div></section>'
+                    f'<section><div class="wrap"><div class="grid"><div class="card"><h3>Good for</h3><ul>{good}</ul></div>'
+                    f'<div class="card"><h3>Keep in mind</h3><ul>{keep}</ul></div></div></div></section>'
+                    f'<section class="soft"><div class="wrap"><h2>More of what BAP does</h2><div class="ql">{related}'
+                    f'<a href="/features/">Everything BAP does</a><a href="/leads/">Leads by county</a></div></div></section>')
+            desc = d["intro"].split(". ")[0].rstrip(".") + ". Part of the BAP real estate investor app."
+            pages[slug] = page(f'{d["h1"]} · BAP', desc[:300], f"/features/{slug}/", body, [bc_ld])
+    return pages, slugs
+
+
 # ---------------------------------------------------------------- homepage
 
 def homepage(feat, stats, v):
     cards = []
     for g in feat["groups"]:
-        names = "".join(f"<li>{esc(t['name'])}</li>" for t in g["tools"][:4])
+        names = "".join((f"<li><a href=\"/features/{t['slug']}/\">{esc(t['name'])}</a></li>" if t.get("slug") else f"<li>{esc(t['name'])}</li>")
+                        for t in g["tools"][:4])
         more = f"<li>and {len(g['tools']) - 4} more</li>" if len(g["tools"]) > 4 else ""
         cards.append(f'<div class="card"><h3>{esc(g["title"])}</h3><p>{esc(g["blurb"])}</p><ul>{names}{more}</ul>'
                      f'<a class="more" href="/features/#{g["id"]}">See these tools →</a></div>')
@@ -368,6 +410,10 @@ async function submitLead(form, kind, extra){{
 
 # ---------------------------------------------------------------- county pages
 
+def slugify(name):
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
 def fmt_date(iso):
     try:
         return datetime.fromisoformat(str(iso).replace("Z", "+00:00")).strftime("%b %-d, %Y") if sys.platform != "win32" \
@@ -399,6 +445,7 @@ def county_pages(conf, stats, feat, v):
     pages = {}
     for r in rows:
         sn = STATES.get(r["state"], r["state"])
+        st_slug = slugify(sn)
         sig = [(label, r[k]) for k, label, _ in SIGNALS if r[k] > 0]
         phrases = [f"{n:,} {txt}" for (k, _, txt), n in ((x, r[x[0]]) for x in SIGNALS) if n > 0]
         top = sorted(((r[k], txt) for k, _, txt in SIGNALS if r[k] > 0), reverse=True)[:3]
@@ -416,12 +463,14 @@ def county_pages(conf, stats, feat, v):
         other_html = ""
         if others:
             links = "".join(f'<a href="/leads/{o["slug"]}/">{esc(o["name"])}</a>' for o in others)
-            other_html = f'<section><div class="wrap"><h2>More {esc(sn)} counties</h2><div class="ql">{links}</div></div></section>'
+            other_html = f'<section><div class="wrap"><h2>More {esc(sn)} counties</h2><div class="ql">{links}<a href="/leads/{st_slug}/">All {esc(sn)} counties</a></div></div></section>'
         n_st = len(per_state[r["state"]])
         rank_txt = (f"BAP tracks {n_st} {esc(sn)} counties with this much data; {esc(r['name'].split(',')[0])} ranks #{rank} by properties."
                     if n_st > 1 else f"It is the only {esc(sn)} county with its own page so far.")
         sig_sentence = (" That includes " + ", ".join(phrases[:4]) + "." if phrases else "")
-        body = f'''<div class="hero"><div class="wrap"><h1>Distressed property leads in {esc(r["name"])}</h1>
+        trail = [("Home", "/"), ("Leads by county", "/leads/")] + ([(sn, f"/leads/{st_slug}/")] if len(per_state[r["state"]]) > 1 else []) + [(r["name"], f"/leads/{r['slug']}/")]
+        bc_ld, bc_html = crumbs(trail)
+        body = f'''<div class="hero"><div class="wrap">{bc_html}<h1>Distressed property leads in {esc(r["name"])}</h1>
 <p>BAP tracks up to {r["properties"]:,} properties in {esc(r["name"])}{metro} with distress signals from public county and city records.{esc(sig_sentence)} Each lead shows the signals behind it, so you can judge for yourself.</p>
 <div class="row"><a class="btn" href="{utm}" data-ev="open_app">See {esc(r["name"].split(",")[0])} leads free</a><a class="btn ghost" href="{APP}/?utm_source=seo&utm_medium=county#demo" data-ev="try_demo">Try the demo</a></div>
 <p class="small" style="margin-top:12px">Free plan, no card needed. Counts as of {updated}; records update as the county publishes them.</p></div></div>
@@ -438,7 +487,32 @@ def county_pages(conf, stats, feat, v):
 <p class="small" style="margin-top:12px">Follow Do Not Call rules and your state's wholesaling and solicitation laws when you contact owners.</p></div></section>{other_html}'''
         title = f"{r['name']} distressed property leads · BAP"
         desc = (f"{r['properties']:,} properties tracked in {r['name']}" + (f": {top_txt}" if top_txt else "") + ". Free to browse. Start free.")
-        pages[r["slug"]] = page(title, desc, f"/leads/{r['slug']}/", body)
+        pages[r["slug"]] = page(title, desc, f"/leads/{r['slug']}/", body, [bc_ld])
+    # state hub pages: one per state that has 2+ county pages
+    hub_slugs = []
+    for st, lst in per_state.items():
+        if len(lst) < 2:
+            continue
+        sn = STATES.get(st, st)
+        slug = slugify(sn)
+        hub_slugs.append(slug)
+        tot = sum(r["properties"] for r in lst)
+        sums = [(txt, sum(r[k] for r in lst)) for k, _, txt in SIGNALS]
+        sums = [(t, n) for t, n in sums if n > 0]
+        sig_line = ", ".join(f"{n:,} {t}" for t, n in sorted(sums, key=lambda x: -x[1])[:4])
+        rows_html = "".join(
+            f'<li><a href="/leads/{r["slug"]}/">{esc(r["name"])}</a> <span class="small">· {r["properties"]:,} properties'
+            + (f", {r['new_7d']:,} new this week" if r["new_7d"] else "") + "</span></li>" for r in lst)
+        bc_ld, bc_html = crumbs([("Home", "/"), ("Leads by county", "/leads/"), (sn, f"/leads/{slug}/")])
+        hub_body = (f'<div class="hero"><div class="wrap">{bc_html}<h1>Distressed property leads in {esc(sn)}</h1>'
+                    f'<p>BAP tracks up to {tot:,} properties across {len(lst)} {esc(sn)} counties from public county and city records. '
+                    f'{esc("That includes " + sig_line + ".") if sig_line else ""} Counts as of {updated}.</p>'
+                    f'<div class="row">{demo_btns("state")}</div></div></div>'
+                    f'<section class="soft"><div class="wrap"><h2>{esc(sn)} counties on BAP</h2><ul class="statelist" style="columns:1">{rows_html}</ul>'
+                    f'<p class="small" style="margin-top:14px">Signals vary by county, and a property can carry more than one. Other {esc(sn)} counties are covered by on-demand leads. <a href="/features/">See how</a>.</p></div></section>')
+        pages[slug] = page(f"{sn} distressed property leads by county · BAP",
+                           f"Distressed property leads in {len(lst)} {sn} counties: up to {tot:,} properties from public records. Free to browse.",
+                           f"/leads/{slug}/", hub_body, [bc_ld])
     # index of counties
     by_state = {}
     for r in rows:
@@ -447,15 +521,17 @@ def county_pages(conf, stats, feat, v):
     for st in sorted(by_state, key=lambda s: STATES.get(s, s)):
         lis = "".join(f'<li><a href="/leads/{r["slug"]}/">{esc(r["name"])}</a> <span class="small">· {r["properties"]:,} properties</span></li>'
                       for r in sorted(by_state[st], key=lambda r: r["name"]))
-        items.append(f'<div class="card"><h3>{esc(STATES.get(st, st))}</h3><ul class="statelist">{lis}</ul></div>')
+        hub = f'<a href="/leads/{slugify(STATES.get(st, st))}/">{esc(STATES.get(st, st))}</a>' if len(by_state[st]) > 1 else esc(STATES.get(st, st))
+        items.append(f'<div class="card"><h3>{hub}</h3><ul class="statelist">{lis}</ul></div>')
     idx_body = (f'<div class="wrap hero"><h1>Distressed property leads by county</h1><p>BAP tracks {v["properties_fmt"]} properties in {v["counties"]} counties across {v["states"]} states. '
                 f'These are the counties with the most data. Counts as of {updated}.</p><div class="row">{demo_btns("leads")}</div></div>'
                 f'<section class="soft"><div class="wrap"><div class="grid">{"".join(items)}</div>'
                 f'<p class="small" style="margin-top:14px">Don\'t see your county? BAP also finds on-demand pre-foreclosure, probate and tax-lien leads for any US county. <a href="/features/">See how</a>.</p></div></section>')
+    bc_ld, _ = crumbs([("Home", "/"), ("Leads by county", "/leads/")])
     index = page("Distressed property leads by county · BAP",
                  f"Browse distressed property leads in {len(rows)} counties across {len({r['state'] for r in rows})} states, from public records. Free to browse.",
-                 "/leads/", idx_body)
-    return pages, index, rows
+                 "/leads/", idx_body, [bc_ld])
+    return pages, index, rows, hub_slugs
 
 
 # ---------------------------------------------------------------- static pages
@@ -570,15 +646,22 @@ def main():
     static_pages = copy_static()
     write("index.html", homepage(feat, stats, v))
     write("features/index.html", features_page(feat, stats, v))
-    cpages, cindex, rows = county_pages(conf, stats, feat, v)
+    cpages, cindex, rows, hubs = county_pages(conf, stats, feat, v)
     for slug, htm in cpages.items():
         write(f"leads/{slug}/index.html", htm)
     write("leads/index.html", cindex)
-    today = date.today().isoformat()
-    urls = ["/", "/features/", "/leads/"] + [f"/leads/{r['slug']}/" for r in rows] + \
-           ["/" + p.replace("index.html", "") for p in static_pages if p != "404.html"]
+    # lastmod only where it is true: pages built from the database carry the date its numbers were last refreshed;
+    # hand-written pages get none (a date that changes daily on every URL teaches Google to ignore lastmod entirely)
+    data_date = str(stats.get("updated_at") or date.today().isoformat())[:10]
+    generated = ["/", "/leads/"] + [f"/leads/{h}/" for h in hubs] + [f"/leads/{r['slug']}/" for r in rows]
+    tpages, tslugs = tool_pages(feat, v)
+    for slug, htm in tpages.items():
+        write(f"features/{slug}/index.html", htm)
+    static = ["/features/"] + [f"/features/{s}/" for s in tslugs] +["/" + p.replace("index.html", "") for p in static_pages if p != "404.html"]
+    urls = generated + static
+    lm = lambda u: f"<lastmod>{data_date}</lastmod>" if u in generated else ""
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-          "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n" for u in dict.fromkeys(urls)) + "</urlset>\n")
+          "".join(f"<url><loc>{SITE}{u}</loc>{lm(u)}</url>\n" for u in dict.fromkeys(urls)) + "</urlset>\n")
     sanity(stats, v, rows)
     skipped = [c["slug"] for c in conf if c["slug"] not in {r["slug"] for r in rows}]
     print(f"OK: {len(rows)} county pages, {len(static_pages)} static pages, sitemap {len(set(urls))} urls")
