@@ -625,6 +625,8 @@ def copy_static():
             if p.name in SKIP_FILES:
                 continue
             shutil.copy2(p, DIST / p.name)
+            if p.name.startswith("google") and p.suffix == ".html":
+                continue  # Search Console ownership file: must stay byte-for-byte as Google issued it, and out of the sitemap
             if p.suffix == ".html":
                 pages.append(p.name)
                 (DIST / p.name).write_text(patch_static(p.read_text(encoding="utf-8"), p.name), encoding="utf-8")
