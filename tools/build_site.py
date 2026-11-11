@@ -347,6 +347,29 @@ def guide_pages(feat, rows):
     return pages, index, data
 
 
+def get_page():
+    """The page a printed QR code opens: one clear way to get the app on a phone (it installs from the browser, no app store)."""
+    q = "utm_source=qr&utm_medium=street&utm_campaign=get"
+    demo, app = f"{APP}/?{q}#demo", f"{APP}/?{q}"
+    steps_ios = ("<li>Open <b>app.buybap.com</b> in <b>Safari</b> (tap the button above).</li><li>Tap the <b>Share</b> button (the square with an arrow).</li>"
+                 "<li>Scroll and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>BAP now opens from your home screen like any app.</li>")
+    steps_and = ("<li>Open <b>app.buybap.com</b> in <b>Chrome</b> (tap the button above).</li><li>Tap the <b>⋮ menu</b> at the top right.</li>"
+                 "<li>Tap <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>BAP now opens from your home screen like any app.</li>")
+    body = (f'<div class="wrap hero" style="padding-top:36px"><h1>Get the BAP app</h1>'
+            f'<p>Find distressed properties, run the numbers and close. Free to try. No app store and no account needed for the demo.</p>'
+            f'<div class="row"><a class="btn" href="{demo}" data-ev="try_demo">Try the free demo</a>'
+            f'<a class="btn ghost" href="{app}" data-ev="open_app">Open BAP</a></div></div>'
+            f'<section class="soft"><div class="wrap"><h2>Put it on your phone in 20 seconds</h2>'
+            f'<div class="grid"><div class="card" id="ios"><h3>iPhone</h3><ol>{steps_ios}</ol></div>'
+            f'<div class="card" id="android"><h3>Android</h3><ol>{steps_and}</ol></div></div>'
+            f'<p class="small" style="margin-top:12px">On a computer? Just open <a href="{app}">app.buybap.com</a>.</p></div></section>')
+    script = ("var ua=navigator.userAgent||'';var ios=/iPhone|iPad|iPod/.test(ua),and=/Android/.test(ua);"
+              "var first=ios?'ios':and?'android':null;if(first){var el=document.getElementById(first);el.style.borderColor='var(--accent)';el.style.borderWidth='2px';el.parentNode.insertBefore(el,el.parentNode.firstChild);}"
+              "try{gtag('event','qr_scan',{qr_code:'get'})}catch(e){}\n")
+    htm = page("Get the BAP app", "Install BAP on your phone in seconds. Free demo, no account needed.", "/get/", body, None, script)
+    return htm.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1)
+
+
 def tool_pages(feat, v):
     """One page per major tool, so each part of the app can rank for what people search for it, not just the homepage."""
     labels = feat["status_labels"]
@@ -719,6 +742,7 @@ def main():
     # hand-written pages get none (a date that changes daily on every URL teaches Google to ignore lastmod entirely)
     data_date = str(stats.get("updated_at") or date.today().isoformat())[:10]
     generated = ["/", "/leads/"] + [f"/leads/{h}/" for h in hubs] + [f"/leads/{r['slug']}/" for r in rows]
+    write("get/index.html", get_page())
     gpages, gindex, gdata = guide_pages(feat, rows)
     for slug, htm in gpages.items():
         write(f"guides/{slug}/index.html", htm)
