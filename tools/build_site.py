@@ -348,26 +348,18 @@ def guide_pages(feat, rows):
 
 
 def get_page():
-    """The page a printed QR code opens: one clear way to get the app on a phone (it installs from the browser, no app store)."""
-    q = "utm_source=qr&utm_medium=street&utm_campaign=get"
-    demo, app = f"{APP}/?{q}#demo", f"{APP}/?{q}"
-    steps_ios = ("<li>Open <b>app.buybap.com</b> in <b>Safari</b> (tap the button above).</li><li>Tap the <b>Share</b> button (the square with an arrow).</li>"
-                 "<li>Scroll and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>BAP now opens from your home screen like any app.</li>")
-    steps_and = ("<li>Open <b>app.buybap.com</b> in <b>Chrome</b> (tap the button above).</li><li>Tap the <b>⋮ menu</b> at the top right.</li>"
-                 "<li>Tap <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>BAP now opens from your home screen like any app.</li>")
-    body = (f'<div class="wrap hero" style="padding-top:36px"><h1>Get the BAP app</h1>'
-            f'<p>Find distressed properties, run the numbers and close. Free to try. No app store and no account needed for the demo.</p>'
-            f'<div class="row"><a class="btn" href="{demo}" data-ev="try_demo">Try the free demo</a>'
-            f'<a class="btn ghost" href="{app}" data-ev="open_app">Open BAP</a></div></div>'
-            f'<section class="soft"><div class="wrap"><h2>Put it on your phone in 20 seconds</h2>'
-            f'<div class="grid"><div class="card" id="ios"><h3>iPhone</h3><ol>{steps_ios}</ol></div>'
-            f'<div class="card" id="android"><h3>Android</h3><ol>{steps_and}</ol></div></div>'
-            f'<p class="small" style="margin-top:12px">On a computer? Just open <a href="{app}">app.buybap.com</a>.</p></div></section>')
-    script = ("var ua=navigator.userAgent||'';var ios=/iPhone|iPad|iPod/.test(ua),and=/Android/.test(ua);"
-              "var first=ios?'ios':and?'android':null;if(first){var el=document.getElementById(first);el.style.borderColor='var(--accent)';el.style.borderWidth='2px';el.parentNode.insertBefore(el,el.parentNode.firstChild);}"
-              "try{gtag('event','qr_scan',{qr_code:'get'})}catch(e){}\n")
-    htm = page("Get the BAP app", "Install BAP on your phone in seconds. Free demo, no account needed.", "/get/", body, None, script)
-    return htm.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1)
+    """What the printed QR code opens: an instant hand-off to the app's own full-screen install screen. Phones only, no page to read.
+    (Installing must happen on the app's own address, so this page only counts the scan and forwards.)"""
+    dest = f"{APP}/?install=1&utm_source=qr&utm_medium=street&utm_campaign=get"
+    d = esc(dest, quote=True)
+    return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+            '<title>BAP</title><meta name="robots" content="noindex">'
+            f'<meta http-equiv="refresh" content="2;url={d}">'
+            '<script async src="https://www.googletagmanager.com/gtag/js?id=G-NW1CM3V8C2"></script>'
+            "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NW1CM3V8C2',{anonymize_ip:true});"
+            f"gtag('event','qr_scan',{{qr_code:'get'}});setTimeout(function(){{location.replace({json.dumps(dest)})}},350);</script>"
+            '<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1D3557;color:#fff;font:17px system-ui,sans-serif;text-align:center}a{color:#F4A261}</style></head>'
+            f'<body><p>Opening BAP…<br><a href="{d}">Tap here if nothing happens</a></p></body></html>')
 
 
 def tool_pages(feat, v):
