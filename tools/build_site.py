@@ -237,9 +237,12 @@ def demo_btns(utm="hero"):
 
 # ---------------------------------------------------------------- pricing
 
+DIAL_LIMITS = {"starter": 150, "pro": 300, "team": 750}  # not tracked in site_stats() yet; keep in sync with the plan limits in Stripe/app
+
 def plan_blurb(p, v):
     bits = [f"<b>Unlimited BAP leads</b>" + (f" for {p['seats']} users" if p["seats"] > 1 else ""),
-            f"{p['national_lead']:,} on-demand nationwide leads", f"{p['skiptrace']:,} skip traces"]
+            f"{p['national_lead']:,} on-demand nationwide leads", f"{p['skiptrace']:,} skip traces",
+            f"{DIAL_LIMITS[p['key']]:,} dials"]
     if p["ai_analysis"]:
         bits.append(f"{p['ai_analysis']} AI deal analyses")
     text = bits[0] + ", plus " + ", ".join(bits[1:-1]) + (" and " if len(bits) > 2 else "") + bits[-1] + " a month."

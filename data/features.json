@@ -176,7 +176,7 @@
     {
      "name": "Direct mail",
      "status": "payg",
-     "text": "Postcards and letters sent for you, from {{price_postcard_low}} first class, with follow-up reminders. Delivery times are estimates. Team plan members get 10% off mail.",
+     "text": "Postcards and letters sent for you, from {{price_postcard_low}} first class, with follow-up reminders. Delivery times are estimates.",
      "slug": "direct-mail",
      "detail": {
       "h1": "Direct mail to property owners",
@@ -193,7 +193,7 @@
       ],
       "keep": [
        "Delivery times are estimates.",
-       "Mail is pay as you go; Team plan members get 10% off."
+       "Mail is pay as you go."
       ]
      }
     },
