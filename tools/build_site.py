@@ -159,7 +159,7 @@ section[id]{scroll-margin-top:64px}
 
 FOOT_SCRIPT = """document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{gtag('event',a.dataset.ev)}catch(e){}}));
 // pass a post's or ad's utm_ tags, and a brand ambassador's code (amb), through to the app so BAP knows who brought each signup
-(function(){try{const u=[...new URLSearchParams(location.search)].filter(([k])=>/^(utm_|amb$)/.test(k));if(!u.length)return;document.querySelectorAll('a[href^="https://app.buybap.com/"]').forEach(l=>{if(/\\/(terms|privacy|refunds)\\//.test(l.href))return;const x=new URL(l.href);u.forEach(([k,v])=>x.searchParams.set(k,v));l.href=x.toString();});}catch(e){}})();"""
+(function(){try{const u=[...new URLSearchParams(location.search)].filter(([k])=>/^(utm_|amb$|join$)/.test(k));if(!u.length)return;document.querySelectorAll('a[href^="https://app.buybap.com/"]').forEach(l=>{if(/\\/(terms|privacy|refunds)\\//.test(l.href))return;const x=new URL(l.href);u.forEach(([k,v])=>x.searchParams.set(k,v));l.href=x.toString();});}catch(e){}})();"""
 
 LEGAL = ("BAP is real estate software and data. BAP is not a real estate broker, agent, lender, appraiser, law firm or financial advisor, "
          "and nothing on this site or in the app is legal, tax or financial advice. Property and owner data comes from public records and "
