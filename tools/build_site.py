@@ -449,7 +449,7 @@ def homepage(feat, stats, v):
 <div class="card"><h3>3. Run the numbers</h3><p>Get estimated value, rent and repairs plus an AI analysis before you make an offer.</p></div>
 <div class="card"><h3>4. Close</h3><p>Fill in a contract and e-sign it, line up funding and send the deal to buyers.</p></div>
 </div></div></section>
-<section class="soft" id="pricing"><div class="wrap"><h2>Pricing</h2><div id="ll" class="card" style="display:none;border:2px solid var(--accent);margin-top:12px" role="status"><h3>Launch Lock: <span id="ll-n">100</span> of 100 spots left</h3><p>The first 100 members to join any paid plan by Dec 2 keep that price for as long as they stay subscribed, plus a free $20 credit pack.</p></div><div class="grid">{pricing_cards(stats, v)}</div>
+<section class="soft" id="pricing"><div class="wrap"><h2>Pricing</h2><div class="grid">{pricing_cards(stats, v)}</div>
 <p class="small" style="margin-top:10px">{pricing_note(v)}</p><div class="row"><a class="btn" href="{APP}/" data-ev="open_app">Start with BAP</a></div></div></section>
 <section id="deal-desk"><div class="wrap"><h2>Deal desk</h2><p class="small">Have a property under contract or a deal to sell or fund? Send it over and we’ll reply within one business day.</p>
 <form onsubmit="return submitLead(this,'deal')"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -468,8 +468,6 @@ def homepage(feat, stats, v):
 <details><summary>Is BAP on iPhone?</summary><p>Yes. Open app.buybap.com in Safari, tap Share, then Add to Home Screen, and BAP opens like an app.</p></details>
 </div></section>'''
     script = f'''const SB_URL="{SB_URL}", SB_KEY="{SB_KEY}";
-// Launch Lock counter: shows only while the offer is approved, open and has spots left
-(async function(){{try{{const r=await fetch(SB_URL+'/rest/v1/rpc/launch_lock_status',{{method:'POST',headers:{{apikey:SB_KEY,'Content-Type':'application/json'}},body:'{{}}'}});if(!r.ok)return;const j=await r.json();if(!j||!j.live)return;document.getElementById('ll-n').textContent=j.spots_left;document.getElementById('ll').style.display='block';}}catch(e){{}}}})();
 async function submitLead(form, kind, extra){{
   const msg=form.querySelector('.msg'); const fd=new FormData(form); const p={{form:kind, details:{{}}}};
   for(const [k,v] of fd.entries()){{ if(['name','phone','email','address','city','state','zip','website'].includes(k)) p[k]=String(v).trim(); else if(k==='consent') p.consent=true; else p.details[k]=String(v).trim(); }}
