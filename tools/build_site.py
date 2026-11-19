@@ -207,9 +207,18 @@ def crumbs(items):
     return ld, f'<p class="small" style="margin:0 0 10px">{trail}</p>'
 
 
+# "Get the app" on every page: opens the app's own install sheet (one-tap install on Android/Chrome, picture steps on iPhone).
+# Installing has to happen on app.buybap.com itself, so the button goes there with ?install=1.
+GET_APP_LINK = (f'<a class="getapp" href="{APP}/?install=1&utm_source=site&utm_medium=nav" data-ev="get_app">'
+                '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" '
+                'stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Get the app</a>')
+CSS_GET_APP = ("header nav a.getapp{display:inline-flex;align-items:center;gap:5px;background:var(--accent);color:var(--accent-fg);"
+               "padding:4px 12px;border-radius:99px;font-weight:700;white-space:nowrap}")
+
+
 def header_html():
     return ('<header><div class="wrap"><a class="logo" href="/"><img src="/icon-192.png" alt="" width="30" height="30">BAP</a><nav>'
-            '<a href="/features/">Features</a><a href="/leads/">Leads by county</a><a href="/#pricing">Pricing</a>'
+            f'{GET_APP_LINK}<a href="/features/">Features</a><a href="/leads/">Leads by county</a><a href="/#pricing">Pricing</a>'
             '<a href="/cash-offer/">Sell a house</a><a href="/funding/">Funding</a><a href="/post-a-deal/">Post a deal</a></nav>'
             f'<a class="btn ghost cta" href="{APP}/" data-ev="open_app">Sign in</a>'
             f'<a class="btn" href="{APP}/?utm_source=site&utm_medium=nav#demo" data-ev="try_demo">Try the demo</a></div></header>')
@@ -226,7 +235,7 @@ def footer_html():
 
 
 def page(title, desc, path, body, jsonld=None, extra_script=""):
-    return (f'<!doctype html>\n<html lang="en"><head>\n{head_tags(title, desc, path, jsonld)}\n<style>{CSS}</style></head><body>\n'
+    return (f'<!doctype html>\n<html lang="en"><head>\n{head_tags(title, desc, path, jsonld)}\n<style>{CSS}{CSS_GET_APP}</style></head><body>\n'
             f'{header_html()}\n<main>\n{body}\n</main>\n{footer_html()}\n<script>\n{FOOT_SCRIPT}\n{extra_script}</script>\n</body></html>\n')
 
 
@@ -653,7 +662,7 @@ def patch_static(text, path):
 CSS_HEADER_EXTRA = (".logo{display:flex;align-items:center;gap:9px}.logo img{width:30px;height:30px;border-radius:7px;display:block}"
                     "header .btn{padding:7px 13px;font-size:.92rem}"
                     "@media (max-width:760px){header nav{order:3;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}"
-                    "header nav a{white-space:nowrap}.logo{margin-right:0}header .cta{margin-left:auto}}")
+                    "header nav a{white-space:nowrap}.logo{margin-right:0}header .cta{margin-left:auto}}" + CSS_GET_APP)
 
 
 def copy_static():
